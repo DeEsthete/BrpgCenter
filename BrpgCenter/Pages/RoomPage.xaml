@@ -1,0 +1,21 @@
+﻿<Page x:Class="BrpgCenter.RoomPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BrpgCenter"
+      mc:Ignorable="d" 
+      d:DesignHeight="757" d:DesignWidth="1258"
+      Title="RoomPage">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BrpgCenter;component/Images/roomBackground.png"/>
+        </Grid.Background>
+        <ListBox x:Name="playersListBox" HorizontalAlignment="Left" Height="737" Margin="994,10,0,0" VerticalAlignment="Top" Width="254" Style="{DynamicResource ListBoxMain}"/>
+        <Button x:Name="rollDice" Content="Кунить кубики" HorizontalAlignment="Left" Margin="785,715,0,0" VerticalAlignment="Top" Width="204" Height="32" Style="{DynamicResource ButtonMain}"/>
+        <Button x:Name="filesSafeButton" Content="Хранилище файлов" HorizontalAlignment="Left" Margin="10,715,0,0" VerticalAlignment="Top" Width="204" Height="32" Style="{DynamicResource ButtonMain}"/>
+        <TextBlock x:Name="masterPlayerName" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="MasterPlayerName" VerticalAlignment="Top" Style="{DynamicResource MainText}"/>
+
+    </Grid>
+</Page>
