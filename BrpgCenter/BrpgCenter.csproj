@@ -68,6 +68,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BrpgCenterContext.cs" />
+    <Compile Include="MainPocket.cs" />
+    <Compile Include="Pages\LiteraturePage.xaml.cs">
+      <DependentUpon>LiteraturePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CharacterPage.xaml.cs">
+      <DependentUpon>CharacterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CharactersPage.xaml.cs">
       <DependentUpon>CharactersPage.xaml</DependentUpon>
     </Compile>
@@ -79,6 +86,9 @@
     <Compile Include="NetCode\Messages\ChatMessage.cs" />
     <Compile Include="Pages\ProfileEditPage.xaml.cs">
       <DependentUpon>ProfileEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PlayerSetings.xaml.cs">
+      <DependentUpon>PlayerSetings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Room.cs" />
     <Compile Include="Pages\ToolsPage.xaml.cs">
@@ -93,6 +103,14 @@
     <Compile Include="Pages\RoomsPage.xaml.cs">
       <DependentUpon>RoomsPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\LiteraturePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CharacterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\CharactersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RoomsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PlayerSetings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,6 +196,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\roomBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\characterBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\literatureBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\profileSetеingsBackgound.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

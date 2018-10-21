@@ -20,9 +20,21 @@ namespace BrpgCenter
     /// </summary>
     public partial class ProfileEditPage : Page
     {
-        public ProfileEditPage()
+        private MainPocket pocket;
+        public ProfileEditPage(MainPocket pocket)
         {
             InitializeComponent();
+            nickNameTextBox.Text = pocket.Player.NickName;
+        }
+
+        private void ChangeIamgeClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveChangedClick(object sender, RoutedEventArgs e)
+        {
+            pocket.Player.NickName = nickNameTextBox.Text;
         }
     }
 }

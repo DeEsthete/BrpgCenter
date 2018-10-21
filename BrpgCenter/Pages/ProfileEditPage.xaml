@@ -5,10 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BrpgCenter"
       mc:Ignorable="d" 
-      d:DesignHeight="757" d:DesignWidth="1258"
+      d:DesignHeight="505" d:DesignWidth="944"
       Title="ProfileEditPage">
+    <Page.Background>
+        <ImageBrush ImageSource="/BrpgCenter;component/Images/profileSetеingsBackgound.png"/>
+    </Page.Background>
 
     <Grid>
-        
+        <Image x:Name="playerImage" HorizontalAlignment="Left" Height="144" VerticalAlignment="Top" Width="144" Margin="400,32,0,0" Source="/BrpgCenter;component/Images/noAvatar.png" Grid.ColumnSpan="2"/>
+        <Button x:Name="changeIamge" Style="{DynamicResource ButtonMain}" Content="Выбрать фото" HorizontalAlignment="Left" Margin="352,181,0,0" VerticalAlignment="Top" Width="242" Click="ChangeIamgeClick"/>
+        <TextBox x:Name="nickNameTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="352,301,0,0" TextWrapping="Wrap" Text="NickName" VerticalAlignment="Top" Width="242" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="352,269,0,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="242" TextAlignment="Center" FontSize="20" Grid.ColumnSpan="2"/>
+        <Button x:Name="saveChanged" Style="{DynamicResource ButtonMain}" Content="Сохранить изменения" HorizontalAlignment="Left" Margin="352,470,0,0" VerticalAlignment="Top" Width="242" Click="SaveChangedClick"/>
     </Grid>
 </Page>

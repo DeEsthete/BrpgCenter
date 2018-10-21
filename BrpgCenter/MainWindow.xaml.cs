@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +22,84 @@ namespace BrpgCenter
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainPocket pocket = new MainPocket();
         public MainWindow()
         {
             InitializeComponent();
-            Content = new CharactersPage();
-            //Content = new RoomsPage();
+            pocket.Player = ReadPlayerFile();
+            if (pocket.Player == null)
+            {
+                Content = new ProfileEditPage(pocket);
+            }
+            pocket.Player.CountCharactaers = pocket.Characters.Count;
+            pocket.Player.CountRooms = pocket.Rooms.Count;
+
+            nickNameTextBlock.Text = pocket.Player.NickName;
+            countRoomsTextBlock.Text = pocket.Player.CountRooms.ToString();
+            countCharactersTextBlock.Text = pocket.Player.CountCharactaers.ToString();
         }
+
+        #region buttonMethods
+        private void RoomsButtonClick(object sender, RoutedEventArgs e)
+        {
+            Content = new RoomsPage();
+        }
+
+        private void CharactersButtonClick(object sender, RoutedEventArgs e)
+        {
+            Content = new CharactersPage();
+        }
+
+        private void LiteratureButtonClick(object sender, RoutedEventArgs e)
+        {
+            Content = new LiteraturePage();
+        }
+
+        private void SettingsButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ExitButtonClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void ProfileSettingsButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region dataWork
+        public static void WritePlayerFile(Player pack)
+        {
+            string serialized = JsonConvert.SerializeObject(pack);
+            using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\" + "PlayerInfo" + ".json", FileMode.OpenOrCreate))
+            {
+                byte[] array = System.Text.Encoding.Default.GetBytes(serialized);
+                fstream.Write(array, 0, array.Length);
+            }
+        }
+        public static Player ReadPlayerFile()
+        {
+            string json;
+            try
+            {
+                using (FileStream fstream = File.OpenRead(Directory.GetCurrentDirectory() + @"\" + "PlayerInfo" + ".json"))
+                {
+                    byte[] array = new byte[fstream.Length];
+                    fstream.Read(array, 0, array.Length);
+                    string textFromFile = System.Text.Encoding.Default.GetString(array);
+                    json = textFromFile;
+                    return JsonConvert.DeserializeObject<Player>(json);
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        #endregion
     }
 }
