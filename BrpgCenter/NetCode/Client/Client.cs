@@ -13,18 +13,18 @@ namespace BrpgCenter
     public class Client
     {
         private const int BYTE_COUNT = 1024;
-
-        public TcpClient TcpClientChat { get; set; }
-        public NetworkStream StreamChat { get; set; }
-
-        public TcpClient TcpClientFile { get; set; }
-        public NetworkStream StreamFile { get; set; }
+        
+        public TcpClientObject ChatClient { get; set; }
+        public TcpClientObject FileClient { get; set; }
+        public TcpClientObject ChangedClient { get; set; }
 
         public List<ChatMessage> Messages { get; set; }
+        public List<Character> AllCharactersInRoom { get; set; }
 
         public string Address { get; set; }
         public int PortChat { get; set; }
         public int PortFile { get; set; }
+        public int PortChanged { get; set; }
         public bool ServerIsConnect { get; set; }
 
         public Client()
@@ -33,17 +33,38 @@ namespace BrpgCenter
 
             PortChat = 8888;
             PortFile = 8887;
+            PortChanged = 8886;
             
             Messages = new List<ChatMessage>();
+            AllCharactersInRoom = new List<Character>();
+        }
+
+        public Client(string address, int portChat, int portFile, int portChanged)
+        {
+            Address = address;
+            PortChat = portChat;
+            PortFile = portFile;
+            PortChanged = portChanged;
+
+            ChatClient = new TcpClientObject();
+            FileClient = new TcpClientObject();
+            ChangedClient = new TcpClientObject();
+
+            Messages = new List<ChatMessage>();
+            AllCharactersInRoom = new List<Character>();
         }
 
         public void Connect()
         {
-            TcpClientChat = new TcpClient(Address, PortChat);
-            StreamChat = TcpClientChat.GetStream();
+            ChatClient.TcpClient = new TcpClient(Address, PortChat);
+            ChatClient.Stream = ChatClient.TcpClient.GetStream();
 
-            TcpClientFile = new TcpClient(Address, PortFile);
-            StreamFile = TcpClientFile.GetStream();
+            FileClient.TcpClient = new TcpClient(Address, PortFile);
+            FileClient.Stream = FileClient.TcpClient.GetStream();
+
+            ChangedClient.TcpClient = new TcpClient(Address, PortChanged);
+            ChangedClient.Stream = ChatClient.TcpClient.GetStream();
+
             ServerIsConnect = true;
         }
 
@@ -60,7 +81,7 @@ namespace BrpgCenter
                 string serialized = JsonConvert.SerializeObject(chatMessage);
                 byte[] bytes = new byte[serialized.Length * sizeof(char)];
                 System.Buffer.BlockCopy(serialized.ToCharArray(), 0, bytes, 0, bytes.Length);
-                StreamChat.Write(bytes, 0, bytes.Length);
+                ChatClient.Stream.Write(bytes, 0, bytes.Length);
             });
         }
 
@@ -76,7 +97,7 @@ namespace BrpgCenter
                 string serialized = JsonConvert.SerializeObject(fileMessage);
                 byte[] bytes = new byte[serialized.Length * sizeof(char)];
                 System.Buffer.BlockCopy(serialized.ToCharArray(), 0, bytes, 0, bytes.Length);
-                StreamChat.Write(bytes, 0, bytes.Length);
+                FileClient.Stream.Write(bytes, 0, bytes.Length);
             });
         }
         #endregion
@@ -87,7 +108,7 @@ namespace BrpgCenter
             await AcceptTextWork();
         }
 
-        public Task AcceptTextWork()
+        private Task AcceptTextWork()
         {
             return Task.Run(() =>
             {
@@ -98,10 +119,10 @@ namespace BrpgCenter
                     int bytes = 0;
                     do
                     {
-                        bytes = StreamChat.Read(buffer, 0, buffer.Length);
+                        bytes = ChatClient.Stream.Read(buffer, 0, buffer.Length);
                         builder.Append(Encoding.Unicode.GetString(buffer, 0, bytes));
                     }
-                    while (StreamChat.DataAvailable);
+                    while (ChatClient.Stream.DataAvailable);
 
                     string serialized = builder.ToString();
                     ChatMessage chatMessage = JsonConvert.DeserializeObject(serialized) as ChatMessage;
@@ -115,7 +136,7 @@ namespace BrpgCenter
             await AcceptFileWork();
         }
 
-        public Task AcceptFileWork()
+        private Task AcceptFileWork()
         {
             return Task.Run(() =>
             {
@@ -126,14 +147,56 @@ namespace BrpgCenter
                     int bytes = 0;
                     do
                     {
-                        bytes = StreamChat.Read(buffer, 0, buffer.Length);
+                        bytes = FileClient.Stream.Read(buffer, 0, buffer.Length);
                         builder.Append(Encoding.Unicode.GetString(buffer, 0, bytes));
                     }
-                    while (StreamChat.DataAvailable);
+                    while (FileClient.Stream.DataAvailable);
 
                     string serialized = builder.ToString();
-                    ChatMessage chatMessage = JsonConvert.DeserializeObject(serialized) as ChatMessage;
-                    Messages.Add(chatMessage);
+                    FileMessage message = JsonConvert.DeserializeObject(serialized) as FileMessage;
+                    //закинуть в папку загрузки
+                }
+            });
+        }
+
+        public async void AcceptChanged() //всегда принимаем сообщения
+        {
+            await AcceptFileWork();
+        }
+
+        private Task AcceptChangedWork()
+        {
+            return Task.Run(() =>
+            {
+                while (ServerIsConnect)
+                {
+                    byte[] buffer = new byte[BYTE_COUNT];
+                    StringBuilder builder = new StringBuilder();
+                    int bytes = 0;
+                    do
+                    {
+                        bytes = FileClient.Stream.Read(buffer, 0, buffer.Length);
+                        builder.Append(Encoding.Unicode.GetString(buffer, 0, bytes));
+                    }
+                    while (FileClient.Stream.DataAvailable);
+
+                    string serialized = builder.ToString();
+                    Character message = JsonConvert.DeserializeObject(serialized) as Character;
+
+                    bool isFind = false;
+                    foreach (var i in AllCharactersInRoom)
+                    {
+                        if (message.Owner == i.Owner)
+                        {
+                            AllCharactersInRoom.Remove(i);
+                            AllCharactersInRoom.Add(message);
+                            isFind = true;
+                        }
+                    }
+                    if (!isFind)
+                    {
+                        AllCharactersInRoom.Add(message);
+                    }
                 }
             });
         }
@@ -141,8 +204,10 @@ namespace BrpgCenter
 
         public void Close()
         {
-            TcpClientChat.Close();
-            TcpClientFile.Close();
+            ChatClient.TcpClient.Close();
+            FileClient.TcpClient.Close();
+            ChangedClient.TcpClient.Close();
+
             ServerIsConnect = false;
         }
     }

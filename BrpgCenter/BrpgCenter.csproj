@@ -68,6 +68,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BrpgCenterContext.cs" />
+    <Compile Include="Pages\ConnectRoomPage.xaml.cs">
+      <DependentUpon>ConnectRoomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CreateRoomPage.xaml.cs">
+      <DependentUpon>CreateRoomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainMenuPage.xaml.cs">
+      <DependentUpon>MainMenuPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPocket.cs" />
     <Compile Include="Pages\LiteraturePage.xaml.cs">
       <DependentUpon>LiteraturePage.xaml</DependentUpon>
@@ -87,9 +96,6 @@
     <Compile Include="Pages\ProfileEditPage.xaml.cs">
       <DependentUpon>ProfileEditPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PlayerSetings.xaml.cs">
-      <DependentUpon>PlayerSetings.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Room.cs" />
     <Compile Include="Pages\ToolsPage.xaml.cs">
       <DependentUpon>ToolsPage.xaml</DependentUpon>
@@ -103,6 +109,18 @@
     <Compile Include="Pages\RoomsPage.xaml.cs">
       <DependentUpon>RoomsPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\ConnectRoomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CreateRoomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LiteraturePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,10 +161,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RoomsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PlayerSetings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,6 +219,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\profileSetеingsBackgound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CreateRoomBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

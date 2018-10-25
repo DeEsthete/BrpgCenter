@@ -1,0 +1,32 @@
+﻿<Page x:Class="BrpgCenter.MainMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BrpgCenter"
+      mc:Ignorable="d" 
+      d:DesignHeight="505" d:DesignWidth="944"
+      Title="MainMenuPage">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BrpgCenter;component/Images/mainBackground.png"/>
+        </Grid.Background>
+        <Rectangle Fill="#4CFFFFFF" HorizontalAlignment="Left" Height="509" Stroke="Black" VerticalAlignment="Top" Width="249"/>
+        <Image HorizontalAlignment="Left" Height="144" VerticalAlignment="Top" Width="144" Margin="51,24,0,0" Source="/BrpgCenter;component/Images/noAvatar.png"/>
+        <TextBlock x:Name="nickNameTextBlock" HorizontalAlignment="Left" Margin="10,173,0,0" TextWrapping="Wrap" Text="nickNameTextBlock" VerticalAlignment="Top" Width="230" TextAlignment="Center" FontSize="20"/>
+        <Button Style="{DynamicResource ButtonMain}" x:Name="profileSettingsButton" Content="Настроить профиль" HorizontalAlignment="Left" Margin="0,479,0,0" VerticalAlignment="Top" Width="249" Click="ProfileSettingsButtonClick"/>
+        <TextBlock HorizontalAlignment="Left" Margin="535,10,0,0" TextWrapping="Wrap" Text="BrpgCenter" VerticalAlignment="Top" FontFamily="Pristina" FontSize="48"/>
+        <TextBlock HorizontalAlignment="Left" Margin="453,24,0,0" TextWrapping="Wrap" Text="welcome to " VerticalAlignment="Top" FontFamily="Pristina" FontSize="22"/>
+        <Button Style="{DynamicResource ButtonMain}" x:Name="charactersButton" Content="Персонажи" HorizontalAlignment="Left" Margin="495,207,0,0" VerticalAlignment="Top" Width="242" Click="CharactersButtonClick"/>
+        <Button Style="{DynamicResource ButtonMain}" x:Name="roomsButton" Content="Комнаты" HorizontalAlignment="Left" Margin="495,173,0,0" VerticalAlignment="Top" Width="242" Click="RoomsButtonClick"/>
+        <Button Style="{DynamicResource ButtonMain}" x:Name="settingsButton" Content="Настройки" HorizontalAlignment="Left" Margin="495,344,0,0" VerticalAlignment="Top" Width="242" Click="SettingsButtonClick"/>
+        <Button Style="{DynamicResource ButtonMain}" x:Name="literatureButton" Content="Литература" HorizontalAlignment="Left" Margin="495,242,0,0" VerticalAlignment="Top" Width="242" Click="LiteratureButtonClick"/>
+        <Button Style="{DynamicResource ButtonMain}" x:Name="exitButton" Content="Выход" HorizontalAlignment="Left" Margin="495,402,0,0" VerticalAlignment="Top" Width="242" Click="ExitButtonClick"/>
+        <Rectangle Fill="#4CFFFFFF" HorizontalAlignment="Left" Height="174" Margin="10,207,0,0" Stroke="Black" VerticalAlignment="Top" Width="230"/>
+        <TextBlock HorizontalAlignment="Left" Margin="51,220,0,0" TextWrapping="Wrap" Text="Кол-во комнат" VerticalAlignment="Top" Width="144" TextAlignment="Center" FontSize="20"/>
+        <TextBlock x:Name="countRoomsTextBlock" HorizontalAlignment="Left" Margin="51,252,0,0" TextWrapping="Wrap" Text="00000000000" VerticalAlignment="Top" Width="144" TextAlignment="Center" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="21,304,0,0" TextWrapping="Wrap" Text="Кол-во персонажей" VerticalAlignment="Top" Width="210" TextAlignment="Center" FontSize="20"/>
+        <TextBlock x:Name="countCharactersTextBlock" HorizontalAlignment="Left" Margin="51,336,0,0" TextWrapping="Wrap" Text="00000000000" VerticalAlignment="Top" Width="144" TextAlignment="Center" FontSize="20"/>
+    </Grid>
+</Page>

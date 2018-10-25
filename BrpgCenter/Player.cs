@@ -14,6 +14,7 @@ namespace BrpgCenter
         public int CountRooms { get; set; }
         public int CountCharactaers { get; set; }
         public int Rating { get; set; }
+        public string PathToImage { get; set; }
 
         public Player()
         {

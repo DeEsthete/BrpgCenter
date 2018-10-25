@@ -22,10 +22,15 @@ namespace BrpgCenter
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainPocket pocket = new MainPocket();
+        private MainPocket pocket;
         public MainWindow()
         {
             InitializeComponent();
+            pocket = new MainPocket();
+            pocket.MainWindow = this;
+            //pocket.Context = new BrpgCenterContext();
+            //pocket.Context.Characters.Add(new Character());
+
             pocket.Player = ReadPlayerFile();
             if (pocket.Player == null)
             {
@@ -34,42 +39,8 @@ namespace BrpgCenter
             pocket.Player.CountCharactaers = pocket.Characters.Count;
             pocket.Player.CountRooms = pocket.Rooms.Count;
 
-            nickNameTextBlock.Text = pocket.Player.NickName;
-            countRoomsTextBlock.Text = pocket.Player.CountRooms.ToString();
-            countCharactersTextBlock.Text = pocket.Player.CountCharactaers.ToString();
+            Content = new MainMenuPage(pocket);
         }
-
-        #region buttonMethods
-        private void RoomsButtonClick(object sender, RoutedEventArgs e)
-        {
-            Content = new RoomsPage();
-        }
-
-        private void CharactersButtonClick(object sender, RoutedEventArgs e)
-        {
-            Content = new CharactersPage();
-        }
-
-        private void LiteratureButtonClick(object sender, RoutedEventArgs e)
-        {
-            Content = new LiteraturePage();
-        }
-
-        private void SettingsButtonClick(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ExitButtonClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void ProfileSettingsButtonClick(object sender, RoutedEventArgs e)
-        {
-
-        }
-        #endregion
 
         #region dataWork
         public static void WritePlayerFile(Player pack)
@@ -95,7 +66,7 @@ namespace BrpgCenter
                     return JsonConvert.DeserializeObject<Player>(json);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

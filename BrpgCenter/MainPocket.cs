@@ -11,6 +11,8 @@ namespace BrpgCenter
         public Player Player { get; set; }
         public List<Room> Rooms { get; set; }
         public List<Character> Characters { get; set; }
+        public MainWindow MainWindow { get; set; }
+        public BrpgCenterContext Context { get; set; }
 
         public MainPocket()
         {

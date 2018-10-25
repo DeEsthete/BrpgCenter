@@ -16,6 +16,6 @@
         <Button x:Name="changeIamge" Style="{DynamicResource ButtonMain}" Content="Выбрать фото" HorizontalAlignment="Left" Margin="352,181,0,0" VerticalAlignment="Top" Width="242" Click="ChangeIamgeClick"/>
         <TextBox x:Name="nickNameTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="352,301,0,0" TextWrapping="Wrap" Text="NickName" VerticalAlignment="Top" Width="242" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Left" Margin="352,269,0,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="242" TextAlignment="Center" FontSize="20" Grid.ColumnSpan="2"/>
-        <Button x:Name="saveChanged" Style="{DynamicResource ButtonMain}" Content="Сохранить изменения" HorizontalAlignment="Left" Margin="352,470,0,0" VerticalAlignment="Top" Width="242" Click="SaveChangedClick"/>
+        <Button x:Name="saveChanged" Style="{DynamicResource ButtonMain}" Content="Сохранить изменения и вернутся" HorizontalAlignment="Left" Margin="324,470,0,0" VerticalAlignment="Top" Width="298" Click="SaveChangedClick"/>
     </Grid>
 </Page>

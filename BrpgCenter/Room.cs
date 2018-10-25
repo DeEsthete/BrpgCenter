@@ -14,8 +14,9 @@ namespace BrpgCenter
         public int Id { get; set; }
         public string Name { get; set; }
         public string Ip { get; set; }
-        public string Port { get; set; }
-        public string Password { get; set; }
+        public int PortChat { get; set; }
+        public int PortFile { get; set; }
+        public int PortChanged { get; set; }
 
         [NotMapped]
         public Player GameMaster { get; set; }

@@ -12,9 +12,10 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BrpgCenter;component/Images/charactersBackground.png"/>
         </Grid.Background>
-        <ListBox Style="{DynamicResource ListBoxMain}" HorizontalAlignment="Left" Height="485" Margin="10,10,0,0" VerticalAlignment="Top" Width="644"/>
-        <Button Style="{DynamicResource ButtonMain}" Content="Создать нового персонажа" HorizontalAlignment="Left" Margin="659,10,0,0" VerticalAlignment="Top" Width="275"/>
-        <Button Style="{DynamicResource ButtonMain}" Content="Редактировать персонажа" HorizontalAlignment="Left" Margin="659,40,0,0" VerticalAlignment="Top" Width="275"/>
+        <ListBox Style="{DynamicResource ListBoxMain}" HorizontalAlignment="Left" Height="365" Margin="146,10,0,0" VerticalAlignment="Top" Width="644"/>
+        <Button Style="{DynamicResource ButtonMain}" Content="Создать нового персонажа" HorizontalAlignment="Left" Margin="311,382,0,0" VerticalAlignment="Top" Width="314"/>
+        <Button Style="{DynamicResource ButtonMain}" Content="Редактировать персонажа" HorizontalAlignment="Left" Margin="327,412,0,0" VerticalAlignment="Top" Width="282"/>
+        <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="311,470,0,0" VerticalAlignment="Top" Width="314" Click="GoBackButtonClick"/>
 
     </Grid>
 </Page>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace BrpgCenter
 {
@@ -21,20 +22,32 @@ namespace BrpgCenter
     public partial class ProfileEditPage : Page
     {
         private MainPocket pocket;
+
         public ProfileEditPage(MainPocket pocket)
         {
             InitializeComponent();
+            this.pocket = pocket;
+            if (pocket.Player == null)
+            {
+                pocket.Player = new Player
+                {
+                    CountCharactaers = 0,
+                    CountRooms = 0,
+                    NickName = "Nickname"
+                };
+            }
             nickNameTextBox.Text = pocket.Player.NickName;
         }
 
         private void ChangeIamgeClick(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Данная функция пока не реализована!");
         }
 
         private void SaveChangedClick(object sender, RoutedEventArgs e)
         {
             pocket.Player.NickName = nickNameTextBox.Text;
+            pocket.MainWindow.Content = new MainMenuPage(pocket);
         }
     }
 }

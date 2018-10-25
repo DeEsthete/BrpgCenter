@@ -16,15 +16,26 @@ using System.Windows.Shapes;
 namespace BrpgCenter
 {
     /// <summary>
-    /// Логика взаимодействия для LiteraturePage.xaml
+    /// Логика взаимодействия для ConnectRoomPage.xaml
     /// </summary>
-    public partial class LiteraturePage : Page
+    public partial class ConnectRoomPage : Page
     {
         private MainPocket pocket;
-        public LiteraturePage(MainPocket pocket)
+
+        public ConnectRoomPage(MainPocket pocket)
         {
             InitializeComponent();
             this.pocket = pocket;
+        }
+
+        private void ConnectButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GoBackButtonClick(object sender, RoutedEventArgs e)
+        {
+            pocket.MainWindow.Content = new RoomsPage(pocket);
         }
     }
 }

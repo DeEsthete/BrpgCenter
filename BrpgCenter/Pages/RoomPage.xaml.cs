@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BrpgCenter
 {
@@ -20,9 +22,52 @@ namespace BrpgCenter
     /// </summary>
     public partial class RoomPage : Page
     {
-        public RoomPage()
+        private MainPocket pocket;
+        private Client client;
+        private Room room;
+
+        public RoomPage(MainPocket pocket, Client client, Room room)
         {
             InitializeComponent();
+            this.pocket = pocket;
+            this.client = client;
+            this.room = room;
+
+            client.AcceptChanged();
+            client.AcceptFile();
+            client.AcceptText();
+            
+            Timer addCharactersTimer = new Timer(new TimerCallback(AddCharactersToListBox), null, 5000, 5000);
+            Timer addChatMessageTimer = new Timer(new TimerCallback(AddMessageToListBox), null, 1000, 1000);
+
+            masterPlayerName.Text = room.GameMaster.NickName;
+            
+        }
+
+        #region timerMethods
+        public void AddCharactersToListBox(object obj)
+        {
+            Dispatcher.Invoke(() => playersListBox.Items.Clear());
+
+            foreach (var i in client.AllCharactersInRoom)
+            {
+                Dispatcher.Invoke(() => playersListBox.Items.Add(i.FullName));
+            }
+        }
+
+        public void AddMessageToListBox(object obj)
+        {
+            foreach (var i in client.Messages)
+            {
+                Dispatcher.Invoke(() => chatListBox.Items.Add(i.Content));
+            }
+            client.Messages.Clear();
+        }
+        #endregion
+
+        private void SendButtonClick(object sender, RoutedEventArgs e)
+        {
+            client.SendTextMessage(new ChatMessage(pocket.Player.NickName, messageFieldTextBox.Text));
         }
     }
 }

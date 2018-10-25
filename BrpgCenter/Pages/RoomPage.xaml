@@ -15,9 +15,9 @@
         <ListBox x:Name="playersListBox" HorizontalAlignment="Left" Height="421" Margin="10,32,0,0" VerticalAlignment="Top" Width="190" Style="{DynamicResource ListBoxMain}"/>
         <Button x:Name="filesSafeButton" Content="Хранилище файлов" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
         <TextBlock x:Name="masterPlayerName" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="MasterPlayerName" VerticalAlignment="Top" Style="{DynamicResource MainText}" Width="190" TextAlignment="Center" Height="20" FontSize="18"/>
-        <ListBox HorizontalAlignment="Left" Height="386" Margin="205,32,0,0" VerticalAlignment="Top" Width="727" Background="#7FFFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="35" Margin="205,418,0,0" TextWrapping="Wrap" Text="MessageText---------------------------------------------------------------------------------------" VerticalAlignment="Top" Width="606" Background="#7FFFFFFF" FontSize="20"/>
-        <Button Content="Отправить" HorizontalAlignment="Left" Margin="811,418,0,0" VerticalAlignment="Top" Width="121" Height="35" Background="#7FFFFFFF" FontSize="18"/>
+        <ListBox x:Name="chatListBox" HorizontalAlignment="Left" Height="386" Margin="205,32,0,0" VerticalAlignment="Top" Width="727" Background="#7FFFFFFF"/>
+        <TextBox x:Name="messageFieldTextBox" HorizontalAlignment="Left" Height="35" Margin="205,418,0,0" TextWrapping="Wrap" Text="MessageText---------------------------------------------------------------------------------------" VerticalAlignment="Top" Width="606" Background="#7FFFFFFF" FontSize="20"/>
+        <Button x:Name="sendButton" Content="Отправить" HorizontalAlignment="Left" Margin="811,418,0,0" VerticalAlignment="Top" Width="121" Height="35" Background="#7FFFFFFF" FontSize="18" Click="SendButtonClick"/>
         <Button x:Name="rollDice" Content="Кинуть кубики" HorizontalAlignment="Left" Margin="205,458,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
 
     </Grid>

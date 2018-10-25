@@ -77,9 +77,7 @@ namespace BrpgCenter
         #region Processes
         public void ProcessChat()
         {
-            ChatMessage chatMessage = new ChatMessage();
-            chatMessage.SenderName = Player.NickName;
-            chatMessage.Content = "Вошел в чат!";
+            ChatMessage chatMessage = new ChatMessage(Player.NickName, "Вошел в чат!");
             Server.SendMessage(chatMessage, Player.Id);
             while (true)
             {

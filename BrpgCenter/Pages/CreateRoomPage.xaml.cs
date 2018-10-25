@@ -16,13 +16,25 @@ using System.Windows.Shapes;
 namespace BrpgCenter
 {
     /// <summary>
-    /// Логика взаимодействия для PlayerSetings.xaml
+    /// Логика взаимодействия для CreateRoomPage.xaml
     /// </summary>
-    public partial class PlayerSetings : Page
+    public partial class CreateRoomPage : Page
     {
-        public PlayerSetings()
+        private MainPocket pocket;
+        public CreateRoomPage(MainPocket pocket)
         {
             InitializeComponent();
+            this.pocket = pocket;
+        }
+
+        private void CreateButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GoBackButtonClick(object sender, RoutedEventArgs e)
+        {
+            pocket.MainWindow.Content = new RoomsPage(pocket);
         }
     }
 }
