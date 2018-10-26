@@ -37,14 +37,7 @@ namespace BrpgCenter
         private void AfterButtonClick(object sender, RoutedEventArgs e)
         {
             ApplyChanged();
-            pocket.MainWindow.Content = new CharacterPageOne(pocket);
-            //
-            //
-            //
-            //Current   ToDo
-            //
-            //
-            //
+            pocket.MainWindow.Content = new CharacterPageOne(pocket, character);
         }
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)

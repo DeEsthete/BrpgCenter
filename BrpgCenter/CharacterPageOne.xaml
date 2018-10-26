@@ -25,30 +25,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="436,165,0,0" TextWrapping="Wrap" Text="Религия" VerticalAlignment="Top" FontSize="20"/>
         <TextBox x:Name="mainHandTextBox" HorizontalAlignment="Left" Height="28" Margin="303,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
         <TextBlock HorizontalAlignment="Left" Margin="459,385,0,0" TextWrapping="Wrap" Text="SM" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="431,-189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="ST"/>
-        <TextBlock HorizontalAlignment="Left" Margin="427,-157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="DX"/>
-        <TextBlock HorizontalAlignment="Left" Margin="432,-125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="IQ"/>
-        <TextBlock HorizontalAlignment="Left" Margin="428,-93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="HT"/>
-        <TextBlock HorizontalAlignment="Left" Margin="427,-61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="HP"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="457,-189,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="457,-158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="457,-126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="457,-94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="457,-62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="46,-179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="MV"/>
-        <TextBlock HorizontalAlignment="Left" Margin="55,-147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="SP"/>
-        <TextBlock HorizontalAlignment="Left" Margin="51,-115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="WL"/>
-        <TextBlock HorizontalAlignment="Left" Margin="55,-83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="PR"/>
-        <TextBlock HorizontalAlignment="Left" Margin="58,-51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="FP"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="81,-179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="81,-148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="81,-116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="81,-84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="81,-52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="230,-178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Раны"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="166,-146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="177" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="211,-115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Усталость"/>
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="166,-84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="177" FontSize="16" Background="#7FFFFFFF"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="121" Click="GoBackButtonClick"/>
         <Button x:Name="beforeButton" Style="{DynamicResource ButtonMain}" Content="Предыдущая страница" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="178" Click="BeforeButtonClick"/>
         <Button x:Name="afterButton" Style="{DynamicResource ButtonMain}" Content="Следующая страница" HorizontalAlignment="Left" Margin="756,470,0,0" VerticalAlignment="Top" Width="178" Click="AfterButtonClick"/>

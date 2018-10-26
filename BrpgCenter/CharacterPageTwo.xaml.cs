@@ -20,9 +20,19 @@ namespace BrpgCenter
     /// </summary>
     public partial class CharacterPageTwo : Page
     {
-        public CharacterPageTwo()
+        private MainPocket pocket;
+        private Character character;
+
+        public CharacterPageTwo(MainPocket pocket, Character character)
         {
             InitializeComponent();
+            this.pocket = pocket;
+            this.character = character;
+        }
+
+        private void GoBackButtonClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

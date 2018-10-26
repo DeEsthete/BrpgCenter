@@ -21,15 +21,26 @@ namespace BrpgCenter
     public partial class CharacterPageOne : Page
     {
         private MainPocket pocket;
-        public CharacterPageOne(MainPocket pocket)
+        private Character character;
+        public CharacterPageOne(MainPocket pocket, Character character)
         {
             InitializeComponent();
             this.pocket = pocket;
+            this.character = character;
         }
 
         private void BeforeButtonClick(object sender, RoutedEventArgs e)
         {
             pocket.MainWindow.Content = new CharacterPage(pocket);
+        }
+
+        private void AfterButtonClick(object sender, RoutedEventArgs e)
+        {
+            pocket.MainWindow.Content = new CharacterPageTwo(pocket, character);
+        }
+
+        private void GoBackButtonClick(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
