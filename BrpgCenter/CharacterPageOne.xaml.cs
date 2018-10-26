@@ -16,20 +16,20 @@ using System.Windows.Shapes;
 namespace BrpgCenter
 {
     /// <summary>
-    /// Логика взаимодействия для LiteraturePage.xaml
+    /// Логика взаимодействия для CharacterPageOne.xaml
     /// </summary>
-    public partial class LiteraturePage : Page
+    public partial class CharacterPageOne : Page
     {
         private MainPocket pocket;
-        public LiteraturePage(MainPocket pocket)
+        public CharacterPageOne(MainPocket pocket)
         {
             InitializeComponent();
             this.pocket = pocket;
         }
 
-        private void GoBackButtonClick(object sender, RoutedEventArgs e)
+        private void BeforeButtonClick(object sender, RoutedEventArgs e)
         {
-            pocket.MainWindow.Content = new MainMenuPage(pocket);
+            pocket.MainWindow.Content = new CharacterPage(pocket);
         }
     }
 }

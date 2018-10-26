@@ -26,5 +26,10 @@ namespace BrpgCenter
             InitializeComponent();
             this.pocket = pocket;
         }
+
+        private void GoBackButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

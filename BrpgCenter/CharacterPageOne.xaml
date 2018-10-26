@@ -1,0 +1,61 @@
+﻿<Page x:Class="BrpgCenter.CharacterPageOne"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BrpgCenter"
+      mc:Ignorable="d" 
+      d:DesignHeight="505" d:DesignWidth="944"
+      Title="CharacterPageOne">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BrpgCenter;component/Images/characterBackground.png"/>
+        </Grid.Background>
+        <TextBlock HorizontalAlignment="Left" Margin="468,440,0,0" TextWrapping="Wrap" Text="TL" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="450,0,0,0" TextWrapping="Wrap" Text="Глаза" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="440,55,0,0" TextWrapping="Wrap" Text="Волосы" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="hairTextBox" HorizontalAlignment="Left" Height="28" Margin="303,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBlock HorizontalAlignment="Left" Margin="406,110,0,0" TextWrapping="Wrap" Text="Основная рука" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="eyeDescriptionTextBox" HorizontalAlignment="Left" Height="28" Margin="303,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBlock HorizontalAlignment="Left" Margin="457,275,0,0" TextWrapping="Wrap" Text="Рост" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="457,330,0,0" TextWrapping="Wrap" Text="Вес" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="457,220,0,0" TextWrapping="Wrap" Text="Пол" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="religionTextBox" HorizontalAlignment="Left" Height="28" Margin="303,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBlock HorizontalAlignment="Left" Margin="436,165,0,0" TextWrapping="Wrap" Text="Религия" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="mainHandTextBox" HorizontalAlignment="Left" Height="28" Margin="303,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBlock HorizontalAlignment="Left" Margin="459,385,0,0" TextWrapping="Wrap" Text="SM" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="431,-189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="ST"/>
+        <TextBlock HorizontalAlignment="Left" Margin="427,-157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="DX"/>
+        <TextBlock HorizontalAlignment="Left" Margin="432,-125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="IQ"/>
+        <TextBlock HorizontalAlignment="Left" Margin="428,-93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="HT"/>
+        <TextBlock HorizontalAlignment="Left" Margin="427,-61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="HP"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="457,-189,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="457,-158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="457,-126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="457,-94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="457,-62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBlock HorizontalAlignment="Left" Margin="46,-179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="MV"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,-147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="SP"/>
+        <TextBlock HorizontalAlignment="Left" Margin="51,-115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="WL"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,-83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="PR"/>
+        <TextBlock HorizontalAlignment="Left" Margin="58,-51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="FP"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="81,-179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="81,-148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="81,-116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="81,-84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="81,-52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBlock HorizontalAlignment="Left" Margin="230,-178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Раны"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="166,-146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="177" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBlock HorizontalAlignment="Left" Margin="211,-115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Усталость"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="166,-84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="177" FontSize="16" Background="#7FFFFFFF"/>
+        <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="121" Click="GoBackButtonClick"/>
+        <Button x:Name="beforeButton" Style="{DynamicResource ButtonMain}" Content="Предыдущая страница" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="178" Click="BeforeButtonClick"/>
+        <Button x:Name="afterButton" Style="{DynamicResource ButtonMain}" Content="Следующая страница" HorizontalAlignment="Left" Margin="756,470,0,0" VerticalAlignment="Top" Width="178" Click="AfterButtonClick"/>
+        <TextBox x:Name="genderTextBox" HorizontalAlignment="Left" Height="28" Margin="303,247,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox x:Name="growthTextBox" HorizontalAlignment="Left" Height="28" Margin="303,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox x:Name="weightTextBox" HorizontalAlignment="Left" Height="28" Margin="303,357,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox x:Name="smTextBox" HorizontalAlignment="Left" Height="28" Margin="303,412,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
+        <TextBox x:Name="tlTextBox" HorizontalAlignment="Left" Height="28" Margin="303,467,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
+    </Grid>
+</Page>

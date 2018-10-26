@@ -28,8 +28,8 @@ namespace BrpgCenter
             InitializeComponent();
             pocket = new MainPocket();
             pocket.MainWindow = this;
-            //pocket.Context = new BrpgCenterContext();
-            //pocket.Context.Characters.Add(new Character());
+
+            pocket.Context = new BrpgCenterContext();
 
             pocket.Player = ReadPlayerFile();
             if (pocket.Player == null)

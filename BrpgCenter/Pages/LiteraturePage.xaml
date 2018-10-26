@@ -13,7 +13,7 @@
             <ImageBrush ImageSource="/BrpgCenter;component/Images/literatureBackground.png"/>
         </Grid.Background>
         <ListBox Style="{DynamicResource ListBoxMain}" HorizontalAlignment="Left" Height="485" Margin="248,10,0,0" VerticalAlignment="Top" Width="470"/>
-        <Button Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="GoBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="GoBackButtonClick"/>
 
     </Grid>
 </Page>

@@ -20,9 +20,54 @@ namespace BrpgCenter
     /// </summary>
     public partial class CharacterPage : Page
     {
-        public CharacterPage()
+        private MainPocket pocket;
+        private Character character;
+        public CharacterPage(MainPocket pocket)
         {
             InitializeComponent();
+            this.pocket = pocket;
+            character = new Character();
+        }
+
+        private void BeforeButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AfterButtonClick(object sender, RoutedEventArgs e)
+        {
+            ApplyChanged();
+            pocket.MainWindow.Content = new CharacterPageOne(pocket);
+            //
+            //
+            //
+            //Current   ToDo
+            //
+            //
+            //
+        }
+
+        private void GoBackButtonClick(object sender, RoutedEventArgs e)
+        {
+            pocket.MainWindow.Content = new CharactersPage(pocket);
+        }
+
+        private void ApplyChanged()
+        {
+            try
+            {
+                character.FullName = fullNameTextBox.Text;
+                character.Race = raceTextBox.Text;
+                character.Status = statusTextBox.Text;
+                character.SkinColor = leatherTextBox.Text;
+                character.WorldName = worldTextBox.Text;
+                character.Age = int.Parse(ageTextBox.Text);
+                character.MainNote = mainNoteTextBox.Text;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не все поля заполнены верно!");
+            }
         }
     }
 }
