@@ -23,16 +23,19 @@ namespace BrpgCenter
     public partial class RoomPage : Page
     {
         private MainPocket pocket;
-        private Client client;
         private Room room;
+        private bool isHost;
+        private Client client;
 
-        public RoomPage(MainPocket pocket, Client client, Room room)
+        public RoomPage(MainPocket pocket, Client client, Room room, bool isHost) // конструктор для клиента
         {
             InitializeComponent();
             this.pocket = pocket;
             this.client = client;
             this.room = room;
+            this.isHost = isHost;
 
+            client.Connect();
             client.AcceptChanged();
             client.AcceptFile();
             client.AcceptText();
@@ -68,6 +71,11 @@ namespace BrpgCenter
         private void SendButtonClick(object sender, RoutedEventArgs e)
         {
             client.SendTextMessage(new ChatMessage(pocket.Player.NickName, messageFieldTextBox.Text));
+        }
+
+        private void GoBackButtonClick(object sender, RoutedEventArgs e)
+        {
+            pocket.MainWindow.Content = new RoomsPage(pocket);
         }
     }
 }

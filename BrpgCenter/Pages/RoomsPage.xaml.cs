@@ -28,7 +28,7 @@ namespace BrpgCenter
             this.pocket = pocket;
 
             //добавление комнат
-            foreach (var i in pocket.Rooms)
+            foreach (var i in pocket.Context.Rooms)
             {
                 if (i.GameMaster.Id == pocket.Player.Id)
                 {
@@ -55,11 +55,11 @@ namespace BrpgCenter
         {
             if (connectedRoomsListBox.SelectedIndex != -1)
             {
-                ConnectRoom(connectedRoomsListBox.SelectedItem as Room);
+                ConnectRoom(pocket.Context.Rooms.ElementAt(connectedRoomsListBox.SelectedIndex));
             }
             else if (createdRoomsListBox.SelectedIndex != -1)
             {
-                ConnectRoom(createdRoomsListBox.SelectedItems as Room);
+                ConnectRoom(pocket.Context.Rooms.ElementAt(createdRoomsListBox.SelectedIndex));
             }
             else
             {
@@ -69,8 +69,8 @@ namespace BrpgCenter
 
         private void ConnectRoom(Room room)
         {
-            Client client = new Client(room.Ip, room.PortChat, room.PortFile, room.PortChanged);
-            pocket.MainWindow.Content = new RoomPage(pocket, client, room);
+            Client client = new Client(room.Ip, room.Port, pocket.Player);
+            pocket.MainWindow.Content = new RoomPage(pocket, client, room, false);
         }
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)

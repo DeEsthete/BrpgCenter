@@ -11,5 +11,11 @@ namespace BrpgCenter
     {
         public Player Player { get; set; }
         public TcpTypeEnum TcpType { get; set; }
+
+        public FirstMessage(Player player, TcpTypeEnum type)
+        {
+            Player = player;
+            TcpType = type;
+        }
     }
 }

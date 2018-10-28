@@ -30,7 +30,13 @@ namespace BrpgCenter
 
         private void ConnectButtonClick(object sender, RoutedEventArgs e)
         {
-
+            pocket.Context.Rooms.Add(new Room
+            {
+                Ip = ipTextBox.Text,
+                Port = int.Parse(portTextBox.Text)
+            });
+            Client client = new Client(pocket.Context.Rooms.Last().Ip, pocket.Context.Rooms.Last().Port, pocket.Player);
+            pocket.MainWindow.Content = new RoomPage(pocket, client, pocket.Context.Rooms.Last(), false);
         }
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)

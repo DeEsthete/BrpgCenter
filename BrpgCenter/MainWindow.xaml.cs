@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,23 +24,41 @@ namespace BrpgCenter
     public partial class MainWindow : Window
     {
         private MainPocket pocket;
+
         public MainWindow()
         {
             InitializeComponent();
+            Closed += MainWindowClosed;
             pocket = new MainPocket();
             pocket.MainWindow = this;
 
             pocket.Context = new BrpgCenterContext();
+            //pocket.Context.Characters.Add(new Character());
 
             pocket.Player = ReadPlayerFile();
             if (pocket.Player == null)
             {
+                pocket.Player = new Player();
+            }
+
+            pocket.Rooms = pocket.Context.Rooms.Local;
+            pocket.Characters = pocket.Context.Characters.Local;
+            pocket.Player.CountCharactaers = pocket.Context.Characters.Count();
+            pocket.Player.CountRooms = pocket.Context.Rooms.Count();
+
+            if (pocket.Player.NickName == null)
+            {
                 Content = new ProfileEditPage(pocket);
             }
-            pocket.Player.CountCharactaers = pocket.Characters.Count;
-            pocket.Player.CountRooms = pocket.Rooms.Count;
+            else
+            {
+                Content = new MainMenuPage(pocket);
+            }
+        }
 
-            Content = new MainMenuPage(pocket);
+        private void MainWindowClosed(object sender, EventArgs e)
+        {
+            pocket.Context.SaveChanges();
         }
 
         #region dataWork

@@ -22,21 +22,23 @@ namespace BrpgCenter
     public partial class ProfileEditPage : Page
     {
         private MainPocket pocket;
+        private Player player;
 
         public ProfileEditPage(MainPocket pocket)
         {
             InitializeComponent();
             this.pocket = pocket;
-            if (pocket.Player == null)
+            this.player = pocket.Player;
+            if (player.NickName == null)
             {
-                pocket.Player = new Player
+                player = new Player
                 {
                     CountCharactaers = 0,
                     CountRooms = 0,
                     NickName = "Nickname"
                 };
             }
-            nickNameTextBox.Text = pocket.Player.NickName;
+            nickNameTextBox.Text = player.NickName;
         }
 
         private void ChangeIamgeClick(object sender, RoutedEventArgs e)
@@ -46,7 +48,7 @@ namespace BrpgCenter
 
         private void SaveChangedClick(object sender, RoutedEventArgs e)
         {
-            pocket.Player.NickName = nickNameTextBox.Text;
+            pocket.Player = player;
             pocket.MainWindow.Content = new MainMenuPage(pocket);
         }
     }

@@ -14,10 +14,14 @@ namespace BrpgCenter
     {
         public TcpListener TcpListener { get; set; } // сервер для прослушивания
         public List<ClientObject> Clients { get; set; } // все подключения
+        public string Address { get; set; }
+        public int Port { get; set; }
 
-        public ServerObject()
+        public ServerObject(string address, int port)
         {
             Clients = new List<ClientObject>();
+            Address = address;
+            Port = port;
         }
 
         public bool SearchPlayer(ClientObject client)   //существует ли уже ClintObject с таким Player, если да подключение закрепляется за ним
@@ -30,23 +34,25 @@ namespace BrpgCenter
                     isTrue = true;
                     if (i.ChatClient == null)
                     {
-                        i.ChatClient = client.ChatClient;
+                        client.ChatClient = i.ChatClient;
                     }
                     if (i.FileClient == null)
                     {
-                        i.FileClient = client.FileClient;
+                        client.FileClient = i.FileClient;
                     }
                     if (i.ChangedClient == null)
                     {
-                        i.ChangedClient = client.ChangedClient;
+                        client.ChangedClient = i.ChangedClient;
                     }
+
+                    Clients.Remove(i);
                 }
             }
 
-            if (isTrue)
-            {
-                Clients.Remove(client);
-            }
+            //if (isTrue)
+            //{
+            //    Clients.Remove(client);
+            //}
 
             return isTrue;
         }
@@ -80,30 +86,37 @@ namespace BrpgCenter
         }
 
         // прослушивание входящих подключений
-        public void Listen()
+        public async void Listen()
         {
-            try
+            await ListenWork();
+        }
+        public Task ListenWork()
+        {
+            return Task.Run(() =>
             {
-                TcpListener = new TcpListener(IPAddress.Any, 8888);
-                TcpListener.Start();
-                Console.WriteLine("Сервер запущен. Ожидание подключений...");
-
-                while (true)
+                try
                 {
-                    TcpClientObject tcpClientObject = new TcpClientObject();
-                    TcpClient tcpClient = TcpListener.AcceptTcpClient();
-                    tcpClientObject.TcpClient = tcpClient;
+                    TcpListener = new TcpListener(IPAddress.Parse(Address), Port);
+                    TcpListener.Start();
+                    Console.WriteLine("Сервер запущен. Ожидание подключений...");
 
-                    ClientObject clientObject = new ClientObject(tcpClientObject, this);
-                    Thread clientThread = new Thread(new ThreadStart(clientObject.ProcessStart));
-                    clientThread.Start();
+                    while (true)
+                    {
+                        TcpClientObject tcpClientObject = new TcpClientObject();
+                        TcpClient tcpClient = TcpListener.AcceptTcpClient();
+                        tcpClientObject.TcpClient = tcpClient;
+
+                        ClientObject clientObject = new ClientObject(tcpClientObject, this);
+                        Thread clientThread = new Thread(new ThreadStart(clientObject.ProcessStart));
+                        clientThread.Start();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Disconnect();
-            }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Disconnect();
+                }
+            });
         }
 
         // трансляция сообщения подключенным клиентам
@@ -133,7 +146,10 @@ namespace BrpgCenter
                 data = Encoding.Unicode.GetBytes(serialized);
                 foreach (var j in Clients)
                 {
-                    j.ChangedClient.Stream.Write(data, 0, data.Length);
+                    if (j.ChangedClient != null)
+                    {
+                        j.ChangedClient.Stream.Write(data, 0, data.Length);
+                    }
                 }
             }
         }

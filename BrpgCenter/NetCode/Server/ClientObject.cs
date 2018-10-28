@@ -35,7 +35,7 @@ namespace BrpgCenter
             {
                 UnknownClient.Stream = UnknownClient.TcpClient.GetStream();
                 FirstMessage firstMessage = GetFirstMessage();
-
+                Player = firstMessage.Player;
                 if (firstMessage.TcpType == TcpTypeEnum.TcpChat)
                 {
                     ChatClient = UnknownClient;
@@ -54,7 +54,6 @@ namespace BrpgCenter
                     Thread fileThread = new Thread(new ThreadStart(ProcessChanged));
                     fileThread.Start();
                 }
-
                 UnknownClient = null;
 
                 if (Server.SearchPlayer(this))
@@ -65,12 +64,6 @@ namespace BrpgCenter
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                // в случае выхода из цикла закрываем ресурсы
-                Server.RemoveConnection(Player.Id);
-                Close();
             }
         }
 
@@ -177,9 +170,9 @@ namespace BrpgCenter
 
             do
             {
-                bytes = ChatClient.Stream.Read(data, 0, data.Length);
+                bytes = ChangedClient.Stream.Read(data, 0, data.Length);
                 builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-            } while (ChatClient.Stream.DataAvailable);
+            } while (ChangedClient.Stream.DataAvailable);
 
             string serialized = builder.ToString();
             Character message = JsonConvert.DeserializeObject<Character>(serialized);
@@ -190,6 +183,8 @@ namespace BrpgCenter
 
         protected internal void Close()
         {
+            Server.RemoveConnection(Player.Id);
+
             ChatClient.TcpClient.Close();
             FileClient.TcpClient.Close();
             ChangedClient.TcpClient.Close();

@@ -21,12 +21,8 @@
         <Button x:Name="connectButton" Style="{DynamicResource ButtonMain}" Content="Подключится" Grid.Column="1" HorizontalAlignment="Left" Margin="10,391,0,0" VerticalAlignment="Top" Width="294" Click="ConnectButtonClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,24,0,0" TextWrapping="Wrap" Text="Ip комнаты" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
         <TextBox x:Name="ipTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,51,0,0" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,141,0,0" TextWrapping="Wrap" Text="Порт для сообщений" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
-        <TextBox x:Name="chatPortTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,168,0,0" TextWrapping="Wrap" Text="8888" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,195,0,0" TextWrapping="Wrap" Text="Порт для файлов" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
-        <TextBox x:Name="filePortTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,222,0,0" TextWrapping="Wrap" Text="8887" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,251,0,0" TextWrapping="Wrap" Text="Порт для изменений" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
-        <TextBox x:Name="changedPortTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,278,0,0" TextWrapping="Wrap" Text="8886" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,141,0,0" TextWrapping="Wrap" Text="Порт" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
+        <TextBox x:Name="portTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,168,0,0" TextWrapping="Wrap" Text="8888" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="294" Grid.Column="1" Click="GoBackButtonClick"/>
 
     </Grid>

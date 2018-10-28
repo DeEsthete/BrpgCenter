@@ -13,7 +13,7 @@ namespace BrpgCenter
     public class Client
     {
         private const int BYTE_COUNT = 1024;
-        
+        public Player Player { get; set; }
         public TcpClientObject ChatClient { get; set; }
         public TcpClientObject FileClient { get; set; }
         public TcpClientObject ChangedClient { get; set; }
@@ -22,29 +22,24 @@ namespace BrpgCenter
         public List<Character> AllCharactersInRoom { get; set; }
 
         public string Address { get; set; }
-        public int PortChat { get; set; }
-        public int PortFile { get; set; }
-        public int PortChanged { get; set; }
+        public int Port { get; set; }
         public bool ServerIsConnect { get; set; }
 
-        public Client()
+        public Client(Player player)
         {
+            Player = player;
             Address = "127.0.0.1";
-
-            PortChat = 8888;
-            PortFile = 8887;
-            PortChanged = 8886;
+            Port = 8888;
             
             Messages = new List<ChatMessage>();
             AllCharactersInRoom = new List<Character>();
         }
 
-        public Client(string address, int portChat, int portFile, int portChanged)
+        public Client(string address, int port, Player player)
         {
+            Player = player;
             Address = address;
-            PortChat = portChat;
-            PortFile = portFile;
-            PortChanged = portChanged;
+            Port = port;
 
             ChatClient = new TcpClientObject();
             FileClient = new TcpClientObject();
@@ -56,25 +51,45 @@ namespace BrpgCenter
 
         public void Connect()
         {
-            ChatClient.TcpClient = new TcpClient(Address, PortChat);
+            ChatClient.TcpClient = new TcpClient(Address, Port);
             ChatClient.Stream = ChatClient.TcpClient.GetStream();
+            SendFirstMessageWork(ChatClient, new FirstMessage(Player, TcpTypeEnum.TcpChat));
 
-            FileClient.TcpClient = new TcpClient(Address, PortFile);
+            FileClient.TcpClient = new TcpClient(Address, Port);
             FileClient.Stream = FileClient.TcpClient.GetStream();
+            SendFirstMessage(FileClient, new FirstMessage(Player, TcpTypeEnum.TcpFile));
 
-            ChangedClient.TcpClient = new TcpClient(Address, PortChanged);
+            ChangedClient.TcpClient = new TcpClient(Address, Port);
             ChangedClient.Stream = ChatClient.TcpClient.GetStream();
+            SendFirstMessage(ChangedClient, new FirstMessage(Player, TcpTypeEnum.TcpChanged));
 
             ServerIsConnect = true;
         }
 
         #region SendMessage
+
+        public async void SendFirstMessage(TcpClientObject client, FirstMessage message)
+        {
+            await SendFirstMessageWork(client, message);
+        }
+
+        private Task SendFirstMessageWork(TcpClientObject client, FirstMessage message)
+        {
+            return Task.Run(() =>
+            {
+                string serialized = JsonConvert.SerializeObject(message);
+                byte[] bytes = new byte[serialized.Length * sizeof(char)];
+                System.Buffer.BlockCopy(serialized.ToCharArray(), 0, bytes, 0, bytes.Length);
+                client.Stream.Write(bytes, 0, bytes.Length);
+            });
+        }
+
         public async void SendTextMessage(ChatMessage chatMessage) //один раз отправляем
         {
             await SendTextMessageWork(chatMessage);
         }
 
-        public Task SendTextMessageWork(ChatMessage chatMessage)
+        private Task SendTextMessageWork(ChatMessage chatMessage)
         {
             return Task.Run(() =>
             {
@@ -90,7 +105,7 @@ namespace BrpgCenter
             await SendFileMessageWork(fileMessage);
         }
 
-        public Task SendFileMessageWork(FileMessage fileMessage)
+        private Task SendFileMessageWork(FileMessage fileMessage)
         {
             return Task.Run(() =>
             {

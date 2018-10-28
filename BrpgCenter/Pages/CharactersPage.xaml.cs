@@ -29,7 +29,24 @@ namespace BrpgCenter
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)
         {
+            pocket.MainWindow.Content = new MainMenuPage(pocket);
+        }
 
+        private void CreateNewCharacterClick(object sender, RoutedEventArgs e)
+        {
+            pocket.MainWindow.Content = new CharacterPage(pocket);
+        }
+
+        private void EditCharacterClick(object sender, RoutedEventArgs e)
+        {
+            if (charactersListBox.SelectedIndex != -1)
+            {
+                pocket.MainWindow.Content = new CharacterPage(pocket, pocket.Context.Characters.ElementAt(charactersListBox.SelectedIndex));
+            }
+            else
+            {
+                MessageBox.Show("Персонаж не выбран!");
+            }
         }
     }
 }

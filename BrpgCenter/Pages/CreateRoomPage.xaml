@@ -23,17 +23,13 @@
         <TextBox x:Name="nameTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,53,0,0" TextWrapping="Wrap" Text="Room" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,89,0,0" TextWrapping="Wrap" Text="Ip комнаты" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
         <TextBox x:Name="ipTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,116,0,0" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,206,0,0" TextWrapping="Wrap" Text="Порт для сообщений" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
-        <TextBox x:Name="chatPortTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,233,0,0" TextWrapping="Wrap" Text="8888" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,260,0,0" TextWrapping="Wrap" Text="Порт для файлов" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
-        <TextBox x:Name="filePortTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,287,0,0" TextWrapping="Wrap" Text="8887" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,316,0,0" TextWrapping="Wrap" Text="Порт для изменений" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
-        <TextBox x:Name="changedPortTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,343,0,0" TextWrapping="Wrap" Text="8886" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,206,0,0" TextWrapping="Wrap" Text="Порт" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
+        <TextBox x:Name="portTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,233,0,0" TextWrapping="Wrap" Text="8888" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
         <Rectangle Fill="#7FFFFFFF" HorizontalAlignment="Left" Height="217" Margin="58,29,0,0" Stroke="#FF8C91FF" VerticalAlignment="Top" Width="209" Grid.Column="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="58,29,0,0" TextWrapping="Wrap" Text="Важно!!!" VerticalAlignment="Top" FontSize="22" Width="209" TextAlignment="Center" Grid.Column="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="67,63,0,0" TextWrapping="Wrap" Text="В поле 'Ip комнаты' необходимо указать текущий Ip вашего компьютера" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="67,145,0,0" TextWrapping="Wrap" Text="Порты не должны совпадать" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="294" Grid.Column="1" Click="GoBackButtonClick"/>
+        <TextBlock HorizontalAlignment="Left" Margin="67,132,0,0" TextWrapping="Wrap" Text="Поле 'Порт' рекомендуется изменять только при необходимости" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
 
     </Grid>
 </Page>

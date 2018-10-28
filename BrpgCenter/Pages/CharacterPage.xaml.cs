@@ -27,6 +27,14 @@ namespace BrpgCenter
             InitializeComponent();
             this.pocket = pocket;
             character = new Character();
+            pocket.Context.Characters.Add(character);
+        }
+
+        public CharacterPage(MainPocket pocket, Character character)
+        {
+            InitializeComponent();
+            this.pocket = pocket;
+            this.character = character;
         }
 
         private void BeforeButtonClick(object sender, RoutedEventArgs e)
@@ -42,7 +50,15 @@ namespace BrpgCenter
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)
         {
-            pocket.MainWindow.Content = new CharactersPage(pocket);
+            ApplyChanged();
+            if (pocket.CurrentRoom != null)
+            {
+                pocket.MainWindow.Content = pocket.CurrentRoom;
+            }
+            else
+            {
+                pocket.MainWindow.Content = new CharactersPage(pocket);
+            }
         }
 
         private void ApplyChanged()

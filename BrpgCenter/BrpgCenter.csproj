@@ -68,10 +68,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BrpgCenterContext.cs" />
-    <Compile Include="CharacterPageOne.xaml.cs">
+    <Compile Include="Pages\CharacterPageThird.xaml.cs">
+      <DependentUpon>CharacterPageThird.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CharacterPageOne.xaml.cs">
       <DependentUpon>CharacterPageOne.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CharacterPageTwo.xaml.cs">
+    <Compile Include="Pages\CharacterPageTwo.xaml.cs">
       <DependentUpon>CharacterPageTwo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ConnectRoomPage.xaml.cs">
@@ -115,11 +118,15 @@
     <Compile Include="Pages\RoomsPage.xaml.cs">
       <DependentUpon>RoomsPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="CharacterPageOne.xaml">
+    <Page Include="Pages\CharacterPageThird.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CharacterPageTwo.xaml">
+    <Page Include="Pages\CharacterPageOne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CharacterPageTwo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

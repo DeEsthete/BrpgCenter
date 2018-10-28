@@ -9,7 +9,6 @@ namespace BrpgCenter
     public enum MessageType
     {
         ChatMessage,
-        FirstMessage,
         FileDownload,
         FileUpload
     }
