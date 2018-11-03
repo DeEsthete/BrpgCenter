@@ -30,6 +30,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="67,63,0,0" TextWrapping="Wrap" Text="В поле 'Ip комнаты' необходимо указать текущий Ip вашего компьютера" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="294" Grid.Column="1" Click="GoBackButtonClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="67,132,0,0" TextWrapping="Wrap" Text="Поле 'Порт' рекомендуется изменять только при необходимости" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
+        <TextBox x:Name="characterIdTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,288,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,261,0,0" TextWrapping="Wrap" Text="Персонаж(id)" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
 
     </Grid>
 </Page>

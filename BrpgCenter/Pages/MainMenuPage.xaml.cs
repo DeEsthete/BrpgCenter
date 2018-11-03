@@ -28,6 +28,10 @@ namespace BrpgCenter
         {
             InitializeComponent();
             this.pocket = pocket;
+            if (pocket.LanguageManager != null && pocket.LanguageManager.CurrentLanguage != null && pocket.LanguageManager.CurrentLanguage != "Russian")
+            {
+                pocket.LanguageManager.Languages[pocket.LanguageManager.CurrentLanguage].Apllying(this);
+            }
 
             nickNameTextBlock.Text = pocket.Player.NickName;
             countRoomsTextBlock.Text = pocket.Player.CountRooms.ToString();
@@ -52,7 +56,7 @@ namespace BrpgCenter
 
         private void SettingsButtonClick(object sender, RoutedEventArgs e)
         {
-
+            pocket.MainWindow.Content = new SettingsPage(pocket);
         }
 
         private void ExitButtonClick(object sender, RoutedEventArgs e)

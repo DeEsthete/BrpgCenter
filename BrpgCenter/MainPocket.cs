@@ -15,12 +15,14 @@ namespace BrpgCenter
         public ObservableCollection<Room> Rooms { get; set; }
         public ObservableCollection<Character> Characters { get; set; }
         public RoomPage CurrentRoom { get; set; }
+        public LanguageManager LanguageManager { get; set; }
 
         public ServerObject Server { get; set; }
 
         public MainPocket()
         {
             Player = new Player();
+            LanguageManager = new LanguageManager();
         }
     }
 }

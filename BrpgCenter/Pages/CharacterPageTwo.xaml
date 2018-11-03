@@ -32,9 +32,9 @@
         <TextBox x:Name="wlTextBox" HorizontalAlignment="Left" Height="28" Margin="457,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
         <TextBox x:Name="prTextBox" HorizontalAlignment="Left" Height="28" Margin="457,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
         <TextBox x:Name="fpTextBox" HorizontalAlignment="Left" Height="28" Margin="457,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="445,354,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Раны"/>
+        <TextBlock x:Name="woundsTextBlock" HorizontalAlignment="Left" Margin="445,354,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Раны"/>
         <TextBox x:Name="woundsTextBox" HorizontalAlignment="Left" Height="28" Margin="270,386,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="399" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="426,417,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Усталость"/>
+        <TextBlock x:Name="fatigueTextBlock" HorizontalAlignment="Left" Margin="426,417,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Text="Усталость"/>
         <TextBox x:Name="fatigueTextBox" HorizontalAlignment="Left" Height="28" Margin="270,448,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="399" FontSize="16" Background="#7FFFFFFF"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="121" Click="GoBackButtonClick"/>
         <Button x:Name="beforeButton" Style="{DynamicResource ButtonMain}" Content="Предыдущая страница" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="178" Click="BeforeButtonClick"/>

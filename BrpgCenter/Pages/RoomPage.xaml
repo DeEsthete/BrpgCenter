@@ -12,14 +12,25 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BrpgCenter;component/Images/roomBackground.png"/>
         </Grid.Background>
-        <ListBox x:Name="playersListBox" HorizontalAlignment="Left" Height="421" Margin="10,32,0,0" VerticalAlignment="Top" Width="190" Style="{DynamicResource ListBoxMain}"/>
-        <Button x:Name="filesSafeButton" Content="Хранилище файлов" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
-        <TextBlock x:Name="masterPlayerName" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="MasterPlayerName" VerticalAlignment="Top" Style="{DynamicResource MainText}" Width="190" TextAlignment="Center" Height="20" FontSize="18"/>
-        <ListBox x:Name="chatListBox" HorizontalAlignment="Left" Height="386" Margin="205,32,0,0" VerticalAlignment="Top" Width="727" Background="#7FFFFFFF"/>
-        <TextBox x:Name="messageFieldTextBox" HorizontalAlignment="Left" Height="35" Margin="205,418,0,0" TextWrapping="Wrap" Text="MessageText---------------------------------------------------------------------------------------" VerticalAlignment="Top" Width="606" Background="#7FFFFFFF" FontSize="20"/>
-        <Button x:Name="sendButton" Content="Отправить" HorizontalAlignment="Left" Margin="811,418,0,0" VerticalAlignment="Top" Width="121" Height="35" Background="#7FFFFFFF" FontSize="18" Click="SendButtonClick"/>
-        <Button x:Name="rollDice" Content="Кинуть кубики" HorizontalAlignment="Left" Margin="205,458,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
-        <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="400,458,0,0" VerticalAlignment="Top" Width="208" Click="GoBackButtonClick"/>
+        <Rectangle Fill="#7F000000" HorizontalAlignment="Left" Height="472" Stroke="#7F000000" VerticalAlignment="Top" Width="205"/>
+        <ListBox x:Name="playersListBox" HorizontalAlignment="Left" Height="423" Margin="0,49,0,0" VerticalAlignment="Top" Width="205" Style="{DynamicResource ListBoxMain}" Background="#0CFFFFFF" BorderBrush="#00747474"/>
+        <Button x:Name="filesSafeButton" Content="Хранилище файлов" HorizontalAlignment="Left" Margin="-772,464,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
+        <TextBlock x:Name="masterPlayerName" HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="MasterPlayerName" VerticalAlignment="Top" Style="{DynamicResource MainText}" Width="205" TextAlignment="Center" Height="34" FontSize="20" Foreground="White"/>
+        <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="0,477,0,0" VerticalAlignment="Top" Width="200" Click="GoBackButtonClick"/>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible"  HorizontalAlignment="Left" Height="67" Margin="205,0,0,0" VerticalAlignment="Top" Width="739">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Background="#7F000000">
+                <Button x:Name="goChatButton" Content="Чат" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000" Click="GoChatButtonClick"/>
+                <Button x:Name="goCanvasButton" Content="Холст" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000"/>
+                <Button x:Name="goStorageButton" Content="Хранилище" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000"/>
+                <Button x:Name="goCharactersButton" Content="Персонажи" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000"/>
+            </StackPanel>
+        </ScrollViewer>
+        <Grid x:Name="chatGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
+            <ListBox x:Name="chatListBox" HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" Width="739" Background="#3EFFFFFF"/>
+            <TextBox x:Name="messageFieldTextBox" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="MessageText" VerticalAlignment="Top" Width="606" Background="#59FFFFFF" FontSize="20" Margin="0,365,0,0"/>
+            <Button x:Name="sendButton" Content="Отправить" HorizontalAlignment="Left" Margin="611,365,0,0" VerticalAlignment="Top" Width="128" Height="35" Background="#66FFFFFF" FontSize="18" Click="SendButtonClick"/>
+            <Button x:Name="rollDice" Content="Кинуть кубики" HorizontalAlignment="Left" Margin="3,405,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
+        </Grid>
 
     </Grid>
 </Page>

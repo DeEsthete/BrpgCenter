@@ -32,21 +32,46 @@ namespace BrpgCenter
         {
             try
             {
-                pocket.Rooms.Add(new Room
+                Room room = new Room
                 {
                     Name = nameTextBox.Text,
                     GameMaster = pocket.Player,
                     Ip = ipTextBox.Text,
                     Port = int.Parse(portTextBox.Text)
-                });
-                Room room = pocket.Rooms.Last();
+                };
+                pocket.Context.Rooms.Add(room);
+
                 pocket.Server = new ServerObject(room.Ip, room.Port);
                 pocket.Server.Listen();
-                Client client = new Client(room.Ip, room.Port, pocket.Player);
-                pocket.MainWindow.Content = new RoomPage(pocket, client, room, true);
+                Character character = null;
+                try
+                {
+                    foreach (var i in pocket.Context.Characters)
+                    {
+                        if (i.Id == int.Parse(characterIdTextBox.Text))
+                        {
+                            character = i;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не все поля заполнены верно!");
+                }
+
+                if (character != null)
+                {
+                    Client client = new Client(room.Ip, room.Port, pocket.Player, character);
+                    pocket.MainWindow.Content = new RoomPage(pocket, client, room, true, character);
+                }
+                else
+                {
+                    MessageBox.Show("Персонаж с таким id не найден");
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
                 MessageBox.Show("Не все поля заполнены верно!");
             }
         }

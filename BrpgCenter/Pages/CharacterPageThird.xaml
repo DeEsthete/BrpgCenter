@@ -12,18 +12,18 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BrpgCenter;component/Images/characterBackground.png"/>
         </Grid.Background>
-        <TextBlock HorizontalAlignment="Left" Margin="450,0,0,0" TextWrapping="Wrap" Text="Раса" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="raceTextBlock" HorizontalAlignment="Left" Margin="283,0,0,0" TextWrapping="Wrap" Text="Раса" VerticalAlignment="Top" FontSize="20" Width="388" TextAlignment="Center"/>
         <TextBox x:Name="raceTextBox" HorizontalAlignment="Left" Height="28" Margin="350,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontSize="16" Background="#7FFFFFFF"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="121" Click="GoBackButtonClick"/>
         <Button x:Name="beforeButton" Style="{DynamicResource ButtonMain}" Content="Предыдущая страница" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="178" Click="BeforeButtonClick"/>
         <Button x:Name="afterButton" Style="{DynamicResource ButtonMain}" Content="Следующая страница" HorizontalAlignment="Left" Margin="756,470,0,0" VerticalAlignment="Top" Width="178" Click="AfterButtonClick"/>
-        <TextBlock HorizontalAlignment="Left" Margin="352,107,0,0" TextWrapping="Wrap" Text="Приемущества/недостатки" VerticalAlignment="Top" FontSize="20" Width="250"/>
+        <TextBlock x:Name="advaDisTextBlock" HorizontalAlignment="Left" Margin="283,107,0,0" TextWrapping="Wrap" Text="Приемущества/недостатки" VerticalAlignment="Top" FontSize="20" Width="388" TextAlignment="Center"/>
         <TextBox x:Name="advaDisTextBox" HorizontalAlignment="Left" Height="113" Margin="283,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="388" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="352,247,0,0" TextWrapping="Wrap" Text="Способности" VerticalAlignment="Top" FontSize="20" Width="250" TextAlignment="Center"/>
+        <TextBlock x:Name="skillsTextBlock" HorizontalAlignment="Left" Margin="283,247,0,0" TextWrapping="Wrap" Text="Способности" VerticalAlignment="Top" FontSize="20" Width="388" TextAlignment="Center"/>
         <TextBox x:Name="skillsTextBox" HorizontalAlignment="Left" Height="102" Margin="283,274,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="388" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="352,376,0,0" TextWrapping="Wrap" Text="Экипировка" VerticalAlignment="Top" FontSize="20" Width="250" TextAlignment="Center"/>
+        <TextBlock x:Name="equipTextBlock" HorizontalAlignment="Left" Margin="283,376,0,0" TextWrapping="Wrap" Text="Экипировка" VerticalAlignment="Top" FontSize="20" Width="388" TextAlignment="Center"/>
         <TextBox x:Name="equipTextBox" HorizontalAlignment="Left" Height="102" Margin="283,403,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="388" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="352,55,0,0" TextWrapping="Wrap" Text="Дата рождения" VerticalAlignment="Top" FontSize="20" Width="248" TextAlignment="Center"/>
+        <TextBlock x:Name="birthdayTextBlock" HorizontalAlignment="Left" Margin="283,55,0,0" TextWrapping="Wrap" Text="Дата рождения" VerticalAlignment="Top" FontSize="20" Width="388" TextAlignment="Center"/>
         <TextBox x:Name="birthdayTextBox" HorizontalAlignment="Left" Height="28" Margin="350,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" FontSize="16" Background="#7FFFFFFF"/>
     </Grid>
 </Page>

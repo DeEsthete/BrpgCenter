@@ -27,6 +27,16 @@ namespace BrpgCenter
             InitializeComponent();
             this.pocket = pocket;
             this.character = character;
+
+            eyeDescriptionTextBox.Text = character.Eyes;
+            hairTextBox.Text = character.Hair;
+            mainHandTextBox.Text = character.MainHand;
+            religionTextBox.Text = character.Religion;
+            genderTextBox.Text = character.Gender;
+            growthTextBox.Text = character.Growth.ToString();
+            weightTextBox.Text = character.Weight.ToString();
+            smTextBox.Text = character.SM.ToString();
+            tlTextBox.Text = character.TL.ToString();
         }
 
         private void BeforeButtonClick(object sender, RoutedEventArgs e)

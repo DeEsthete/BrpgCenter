@@ -30,14 +30,7 @@ namespace BrpgCenter
             //добавление комнат
             foreach (var i in pocket.Context.Rooms)
             {
-                if (i.GameMaster.Id == pocket.Player.Id)
-                {
-                    createdRoomsListBox.Items.Add(i);
-                }
-                else
-                {
-                    connectedRoomsListBox.Items.Add(i);
-                }
+                roomsListBox.Items.Add("Id: " + i.Id + "Ip: " + i.Ip + "Port: " + i.Port);
             }
         }
 
@@ -53,13 +46,10 @@ namespace BrpgCenter
 
         private void ConnectToRoomButtonClick(object sender, RoutedEventArgs e)
         {
-            if (connectedRoomsListBox.SelectedIndex != -1)
+            if (roomsListBox.SelectedIndex != -1)
             {
-                ConnectRoom(pocket.Context.Rooms.ElementAt(connectedRoomsListBox.SelectedIndex));
-            }
-            else if (createdRoomsListBox.SelectedIndex != -1)
-            {
-                ConnectRoom(pocket.Context.Rooms.ElementAt(createdRoomsListBox.SelectedIndex));
+                List<Room> rooms = pocket.Context.Rooms.ToList();
+                ConnectRoom(rooms[roomsListBox.SelectedIndex]);
             }
             else
             {
@@ -69,8 +59,34 @@ namespace BrpgCenter
 
         private void ConnectRoom(Room room)
         {
-            Client client = new Client(room.Ip, room.Port, pocket.Player);
-            pocket.MainWindow.Content = new RoomPage(pocket, client, room, false);
+            Character character = null;
+            try
+            {
+                foreach (var i in pocket.Context.Characters)
+                {
+                    if (i.Id == int.Parse(characterIdTextBox.Text))
+                    {
+                        character = i;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не все поля заполнены верно!");
+            }
+
+            if (character != null)
+            {
+                Client client = new Client(room.Ip, room.Port, pocket.Player, character);
+                if (client.IsConnected)
+                {
+                    pocket.MainWindow.Content = new RoomPage(pocket, client, room, false, character);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Персонажа с таким id не найден!");
+            }
         }
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)

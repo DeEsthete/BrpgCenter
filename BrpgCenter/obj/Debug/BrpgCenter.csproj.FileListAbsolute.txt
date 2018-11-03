@@ -49,3 +49,5 @@ E:\Рабочий стол\BrpgCenter\BrpgCenter\obj\Debug\Pages\CharacterPageOn
 E:\Рабочий стол\BrpgCenter\BrpgCenter\obj\Debug\Pages\CharacterPageTwo.baml
 E:\Рабочий стол\BrpgCenter\BrpgCenter\obj\Debug\Pages\CharacterPageThird.g.cs
 E:\Рабочий стол\BrpgCenter\BrpgCenter\obj\Debug\Pages\CharacterPageThird.baml
+E:\Рабочий стол\BrpgCenter\BrpgCenter\obj\Debug\Pages\SettingsPage.g.cs
+E:\Рабочий стол\BrpgCenter\BrpgCenter\obj\Debug\Pages\SettingsPage.baml

@@ -24,6 +24,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="10,141,0,0" TextWrapping="Wrap" Text="Порт" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
         <TextBox x:Name="portTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,168,0,0" TextWrapping="Wrap" Text="8888" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="294" Grid.Column="1" Click="GoBackButtonClick"/>
+        <TextBox x:Name="characterIdTextBox" FontSize="16" Style="{DynamicResource MainTextBox}" HorizontalAlignment="Left" Height="23" Margin="27,258,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" TextAlignment="Center" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,231,0,0" TextWrapping="Wrap" Text="Персонаж(id)" VerticalAlignment="Top" Width="294" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
 
     </Grid>
 </Page>

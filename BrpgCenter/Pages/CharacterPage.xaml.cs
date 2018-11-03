@@ -35,6 +35,14 @@ namespace BrpgCenter
             InitializeComponent();
             this.pocket = pocket;
             this.character = character;
+
+            fullNameTextBox.Text = character.FullName;
+            raceTextBox.Text = character.Race;
+            statusTextBox.Text = character.Status;
+            leatherTextBox.Text = character.SkinColor;
+            worldTextBox.Text = character.WorldName;
+            ageTextBox.Text = character.Age.ToString();
+            mainNoteTextBox.Text = character.MainNote;
         }
 
         private void BeforeButtonClick(object sender, RoutedEventArgs e)

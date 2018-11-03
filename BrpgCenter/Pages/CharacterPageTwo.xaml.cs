@@ -28,6 +28,19 @@ namespace BrpgCenter
             InitializeComponent();
             this.pocket = pocket;
             this.character = character;
+
+            mvTextBox.Text = character.Move.ToString();
+            spTextBox.Text = character.Speed.ToString();
+            wlTextBox.Text = character.Will.ToString();
+            prTextBox.Text = character.Per.ToString();
+            fpTextBox.Text = character.FP.ToString();
+            stTextBox.Text = character.ST.ToString();
+            dxTextBox.Text = character.DX.ToString();
+            iqTextBox.Text = character.IQ.ToString();
+            htTextBox.Text = character.HT.ToString();
+            hpTextBox.Text = character.HP.ToString();
+            woundsTextBox.Text = character.Wounds;
+            fatigueTextBox.Text = character.Fatigue;
         }
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)

@@ -12,20 +12,20 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BrpgCenter;component/Images/characterBackground.png"/>
         </Grid.Background>
-        <TextBlock HorizontalAlignment="Left" Margin="400,5,0,0" TextWrapping="Wrap" Text="Имя персонажа" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="characterNameTextBlock" HorizontalAlignment="Left" Margin="303,5,0,0" TextWrapping="Wrap" Text="Имя персонажа" VerticalAlignment="Top" FontSize="20" Width="344" TextAlignment="Center"/>
         <TextBox x:Name="fullNameTextBox" HorizontalAlignment="Left" Height="28" Margin="303,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="451,228,0,0" TextWrapping="Wrap" Text="Мир" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="worldTextBlock" HorizontalAlignment="Left" Margin="302,228,0,0" TextWrapping="Wrap" Text="Мир" VerticalAlignment="Top" FontSize="20" Width="344" TextAlignment="Center"/>
         <TextBox x:Name="worldTextBox" HorizontalAlignment="Left" Height="28" Margin="302,255,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="449,118,0,0" TextWrapping="Wrap" Text="Статус" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="statusTextBlock" HorizontalAlignment="Left" Margin="302,118,0,0" TextWrapping="Wrap" Text="Статус" VerticalAlignment="Top" FontSize="20" Width="344" TextAlignment="Center"/>
         <TextBox x:Name="raceTextBox" HorizontalAlignment="Left" Height="28" Margin="302,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="435,283,0,0" TextWrapping="Wrap" Text="Возраст" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="ageTextBlock" HorizontalAlignment="Left" Margin="303,283,0,0" TextWrapping="Wrap" Text="Возраст" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
         <TextBox x:Name="ageTextBox" HorizontalAlignment="Left" Height="28" Margin="303,310,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="343" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="449,173,0,0" TextWrapping="Wrap" Text="Кожа" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="skinTextBlock" HorizontalAlignment="Left" Margin="303,173,0,0" TextWrapping="Wrap" Text="Кожа" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
         <TextBox x:Name="statusTextBox" HorizontalAlignment="Left" Height="28" Margin="302,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="457,62,0,0" TextWrapping="Wrap" Text="Раса" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="raceTextBlock" HorizontalAlignment="Left" Margin="303,62,0,0" TextWrapping="Wrap" Text="Раса" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
         <TextBox x:Name="leatherTextBox" HorizontalAlignment="Left" Height="28" Margin="302,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
         <TextBox x:Name="mainNoteTextBox" HorizontalAlignment="Left" Height="130" Margin="219,365,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="510" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="431,338,0,0" TextWrapping="Wrap" Text="Заметки" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="notesTextBlock" HorizontalAlignment="Left" Margin="303,338,0,0" TextWrapping="Wrap" Text="Заметки" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="121" Click="GoBackButtonClick"/>
         <Button x:Name="beforeButton" Style="{DynamicResource ButtonMain}" Content="Предыдущая страница" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="178" Click="BeforeButtonClick"/>
         <Button x:Name="afterButton" Style="{DynamicResource ButtonMain}" Content="Следующая страница" HorizontalAlignment="Left" Margin="756,470,0,0" VerticalAlignment="Top" Width="178" Click="AfterButtonClick"/>

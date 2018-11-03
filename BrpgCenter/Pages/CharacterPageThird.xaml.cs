@@ -27,6 +27,12 @@ namespace BrpgCenter
             InitializeComponent();
             this.pocket = pocket;
             this.character = character;
+
+            raceTextBox.Text = character.Race;
+            birthdayTextBox.Text = character.Birthday;
+            advaDisTextBox.Text = character.AdvantagesDisadvantages;
+            skillsTextBox.Text = character.Skills;
+            equipTextBox.Text = character.Equip;
         }
 
         private void BeforeButtonClick(object sender, RoutedEventArgs e)
@@ -58,7 +64,7 @@ namespace BrpgCenter
             try
             {
                 character.Race = raceTextBox.Text;
-                character.Birthday = DateTime.Parse(birthdayTextBox.Text);
+                character.Birthday = birthdayTextBox.Text;
                 character.AdvantagesDisadvantages = advaDisTextBox.Text;
                 character.Skills = skillsTextBox.Text;
                 character.Equip = equipTextBox.Text;

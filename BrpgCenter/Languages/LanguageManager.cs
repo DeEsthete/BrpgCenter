@@ -11,15 +11,16 @@ namespace BrpgCenter
     public class LanguageManager
     {
         public Dictionary<string, Language> Languages { get; set; }
+        public List<string> LanguageNames { get; set; }
+        public string CurrentLanguage { get; set; }
 
         public LanguageManager()
         {
             Languages = new Dictionary<string, Language>();
         }
 
-        public void SetLanguage(string current, MainWindow window)
+        public void SetLanguage(string current, MainMenuPage window)
         {
-            //string current = languageComboBox.SelectedItem as string;
             bool isTrue = false;
 
             foreach (var i in Languages)
@@ -35,6 +36,24 @@ namespace BrpgCenter
             }
 
             Languages[current].Apllying(window);
+        }
+
+        public void AddNewLanguage()
+        {
+            string languageName = "English";
+            LanguageNames.Add(languageName);
+            Language english = new Language();
+            english.WordLibrary.Add("roomsButton", "Rooms");
+            english.WordLibrary.Add("charactersButton", "Characters");
+            english.WordLibrary.Add("literatureButton", "Literature");
+            english.WordLibrary.Add("settingsButton", "Settings");
+            english.WordLibrary.Add("exitButton", "Exit");
+            english.WordLibrary.Add("profileSettingsButton", "Profile edit");
+            english.WordLibrary.Add("countRoomsPredictionAnTextBlock", "Count rooms");
+            english.WordLibrary.Add("countCharactersAnTextBlock", "Count characters");
+            Languages.Add(languageName, english);
+            WriteFileLanguage(english, languageName);
+            WriteFileLanguageList(LanguageNames);
         }
 
         #region DataManagerMethods
@@ -78,18 +97,27 @@ namespace BrpgCenter
         }
         public static List<string> ReadFileLanguageList()
         {
-            string json;
-            using (FileStream fstream = File.OpenRead(Directory.GetCurrentDirectory() + @"\" + "Languages" + ".json"))
+            try
             {
-                // преобразуем строку в байты
-                byte[] array = new byte[fstream.Length];
-                // считываем данные
-                fstream.Read(array, 0, array.Length);
-                // декодируем байты в строку
-                string textFromFile = System.Text.Encoding.Default.GetString(array);
-                json = textFromFile;
+                string json;
+                using (FileStream fstream = File.OpenRead(Directory.GetCurrentDirectory() + @"\" + "Languages" + ".json"))
+                {
+                    // преобразуем строку в байты
+                    byte[] array = new byte[fstream.Length];
+                    // считываем данные
+                    fstream.Read(array, 0, array.Length);
+                    // декодируем байты в строку
+                    string textFromFile = System.Text.Encoding.Default.GetString(array);
+                    json = textFromFile;
+                }
+                return JsonConvert.DeserializeObject<List<string>>(json);
             }
-            return JsonConvert.DeserializeObject<List<string>>(json);
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return new List<string>();
+            }
+            
         }
         #endregion
     }

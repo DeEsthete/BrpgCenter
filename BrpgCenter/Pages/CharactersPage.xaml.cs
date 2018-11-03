@@ -25,6 +25,11 @@ namespace BrpgCenter
         {
             InitializeComponent();
             this.pocket = pocket;
+            pocket.Context.SaveChanges();
+            foreach (var i in pocket.Context.Characters)
+            {
+                charactersListBox.Items.Add("Id: " + i.Id + " Имя: " + i.FullName);
+            }
         }
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)
@@ -41,7 +46,7 @@ namespace BrpgCenter
         {
             if (charactersListBox.SelectedIndex != -1)
             {
-                pocket.MainWindow.Content = new CharacterPage(pocket, pocket.Context.Characters.ElementAt(charactersListBox.SelectedIndex));
+                pocket.MainWindow.Content = new CharacterPage(pocket, pocket.Characters[charactersListBox.SelectedIndex]);
             }
             else
             {

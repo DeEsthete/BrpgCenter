@@ -35,7 +35,8 @@ namespace BrpgCenter
                 {
                     CountCharactaers = 0,
                     CountRooms = 0,
-                    NickName = "Nickname"
+                    NickName = "Nickname",
+                    PathToImage = "none"
                 };
             }
             nickNameTextBox.Text = player.NickName;

@@ -12,19 +12,19 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BrpgCenter;component/Images/characterBackground.png"/>
         </Grid.Background>
-        <TextBlock HorizontalAlignment="Left" Margin="468,440,0,0" TextWrapping="Wrap" Text="TL" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="450,0,0,0" TextWrapping="Wrap" Text="Глаза" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="440,55,0,0" TextWrapping="Wrap" Text="Волосы" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="tlTextBlock" HorizontalAlignment="Left" Margin="304,440,0,0" TextWrapping="Wrap" Text="TL" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
+        <TextBlock x:Name="eyesTextBlock" HorizontalAlignment="Left" Margin="303,0,0,0" TextWrapping="Wrap" Text="Глаза" VerticalAlignment="Top" FontSize="20" Width="344" TextAlignment="Center"/>
+        <TextBlock x:Name="hairTextBlock" HorizontalAlignment="Left" Margin="304,55,0,0" TextWrapping="Wrap" Text="Волосы" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
         <TextBox x:Name="hairTextBox" HorizontalAlignment="Left" Height="28" Margin="303,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="406,110,0,0" TextWrapping="Wrap" Text="Основная рука" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="mainHandTextBlock" HorizontalAlignment="Left" Margin="304,110,0,0" TextWrapping="Wrap" Text="Основная рука" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
         <TextBox x:Name="eyeDescriptionTextBox" HorizontalAlignment="Left" Height="28" Margin="303,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="457,275,0,0" TextWrapping="Wrap" Text="Рост" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="457,330,0,0" TextWrapping="Wrap" Text="Вес" VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="457,220,0,0" TextWrapping="Wrap" Text="Пол" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="growthTextBlock" HorizontalAlignment="Left" Margin="303,275,0,0" TextWrapping="Wrap" Text="Рост" VerticalAlignment="Top" FontSize="20" Width="344" TextAlignment="Center"/>
+        <TextBlock x:Name="weightTextBlock" HorizontalAlignment="Left" Margin="304,330,0,0" TextWrapping="Wrap" Text="Вес" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
+        <TextBlock x:Name="genderTextBlock" HorizontalAlignment="Left" Margin="304,220,0,0" TextWrapping="Wrap" Text="Пол" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
         <TextBox x:Name="religionTextBox" HorizontalAlignment="Left" Height="28" Margin="303,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="436,165,0,0" TextWrapping="Wrap" Text="Религия" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="religionTextBlock" HorizontalAlignment="Left" Margin="304,165,0,0" TextWrapping="Wrap" Text="Религия" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
         <TextBox x:Name="mainHandTextBox" HorizontalAlignment="Left" Height="28" Margin="303,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="344" FontSize="16" Background="#7FFFFFFF"/>
-        <TextBlock HorizontalAlignment="Left" Margin="459,385,0,0" TextWrapping="Wrap" Text="SM" VerticalAlignment="Top" FontSize="20"/>
+        <TextBlock x:Name="smTextBlock" HorizontalAlignment="Left" Margin="304,385,0,0" TextWrapping="Wrap" Text="SM" VerticalAlignment="Top" FontSize="20" Width="343" TextAlignment="Center"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="121" Click="GoBackButtonClick"/>
         <Button x:Name="beforeButton" Style="{DynamicResource ButtonMain}" Content="Предыдущая страница" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="178" Click="BeforeButtonClick"/>
         <Button x:Name="afterButton" Style="{DynamicResource ButtonMain}" Content="Следующая страница" HorizontalAlignment="Left" Margin="756,470,0,0" VerticalAlignment="Top" Width="178" Click="AfterButtonClick"/>

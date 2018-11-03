@@ -16,13 +16,17 @@ namespace BrpgCenter
             WordLibrary = new Dictionary<string, string>();
         }
 
-        public virtual void Apllying(MainWindow window)
+        public virtual void Apllying(MainMenuPage window)
         {
             //Смена языка по начальному названию
-            (window.FindName("fattyButton") as Button).Content = WordLibrary["Fatty"];
-            (window.FindName("italicsButton") as Button).Content = WordLibrary["Italics"];
-            (window.FindName("underlinedButton") as Button).Content = WordLibrary["Underlined"];
-            (window.FindName("saveButton") as Button).Content = WordLibrary["Save"];
+            (window.FindName("roomsButton") as Button).Content = WordLibrary["roomsButton"];
+            (window.FindName("charactersButton") as Button).Content = WordLibrary["charactersButton"];
+            (window.FindName("literatureButton") as Button).Content = WordLibrary["literatureButton"];
+            (window.FindName("settingsButton") as Button).Content = WordLibrary["settingsButton"];
+            (window.FindName("exitButton") as Button).Content = WordLibrary["exitButton"];
+            (window.FindName("profileSettingsButton") as Button).Content = WordLibrary["profileSettingsButton"];
+            (window.FindName("countRoomsPredictionAnTextBlock") as TextBlock).Text = WordLibrary["countRoomsPredictionAnTextBlock"];
+            (window.FindName("countCharactersAnTextBlock") as TextBlock).Text = WordLibrary["countCharactersAnTextBlock"];
         }
     }
 }

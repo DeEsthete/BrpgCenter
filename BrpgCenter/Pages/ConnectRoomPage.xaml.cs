@@ -35,8 +35,39 @@ namespace BrpgCenter
                 Ip = ipTextBox.Text,
                 Port = int.Parse(portTextBox.Text)
             });
-            Client client = new Client(pocket.Context.Rooms.Last().Ip, pocket.Context.Rooms.Last().Port, pocket.Player);
-            pocket.MainWindow.Content = new RoomPage(pocket, client, pocket.Context.Rooms.Last(), false);
+            pocket.Rooms.Add(new Room
+            {
+                Ip = ipTextBox.Text,
+                Port = int.Parse(portTextBox.Text)
+            });
+            Character character = null;
+            try
+            {
+                foreach (var i in pocket.Context.Characters)
+                {
+                    if (i.Id == int.Parse(characterIdTextBox.Text))
+                    {
+                        character = i;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не все поля заполнены верно!");
+            }
+            
+            if (character != null)
+            {
+                Client client = new Client(pocket.Rooms.Last().Ip, pocket.Rooms.Last().Port, pocket.Player, character);
+                if (client.IsConnected)
+                {
+                    pocket.MainWindow.Content = new RoomPage(pocket, client, pocket.Rooms.Last(), false, character);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Персонаж с таким id не найден");
+            }
         }
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)

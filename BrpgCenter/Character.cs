@@ -22,7 +22,7 @@ namespace BrpgCenter
         public int TL { get; set; } //Технический уровень
         public string Status { get; set; } //статус персонажа в мире
         public int Age { get; set; } //возраст
-        public DateTime Birthday { get; set; } //дата рождения
+        public string Birthday { get; set; } //дата рождения
         public string Eyes { get; set; } //описание глаз
         public string Hair { get; set; } //описание волос
         public string SkinColor { get; set; } //описание цвета кожи
