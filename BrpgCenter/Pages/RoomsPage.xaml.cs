@@ -77,7 +77,7 @@ namespace BrpgCenter
 
             if (character != null)
             {
-                Client client = new Client(room.Ip, room.Port, pocket.Player, character);
+                ChatClient client = new ChatClient(room.Ip, room.Port, pocket.Player, character);
                 if (client.IsConnected)
                 {
                     pocket.MainWindow.Content = new RoomPage(pocket, client, room, false, character);
@@ -92,6 +92,21 @@ namespace BrpgCenter
         private void GoBackButtonClick(object sender, RoutedEventArgs e)
         {
             pocket.MainWindow.Content = new MainMenuPage(pocket);
+        }
+
+        private void DeleteRoomButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (roomsListBox.SelectedIndex != -1)
+            {
+                List<Room> rooms = pocket.Context.Rooms.ToList();
+                pocket.Context.Rooms.Remove(rooms[roomsListBox.SelectedIndex]);
+                roomsListBox.Items.RemoveAt(roomsListBox.SelectedIndex);
+                pocket.Context.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Комната не выбрана!");
+            }
         }
     }
 }

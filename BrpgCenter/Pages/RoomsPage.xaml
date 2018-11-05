@@ -13,11 +13,12 @@
 
     <Grid>
         <ListBox x:Name="roomsListBox" Style="{DynamicResource ListBoxMain}" HorizontalAlignment="Left" Height="485" Margin="10,10,0,0" VerticalAlignment="Top" Width="597" Background="#66FFFFFF"/>
-        <Button x:Name="connectToNewRoomButton" Style="{DynamicResource ButtonMain}" Content="Подключится к нововой комнате" HorizontalAlignment="Left" Margin="612,161,0,0" VerticalAlignment="Top" Width="322" Click="ConnectToNewRoomButtonClick"/>
-        <Button x:Name="createNewRoomButton" Style="{DynamicResource ButtonMain}" Content="Создать новую комнату" HorizontalAlignment="Left" Margin="612,191,0,0" VerticalAlignment="Top" Width="322" Click="CreateNewRoomButtonClick"/>
+        <Button x:Name="connectToNewRoomButton" Style="{DynamicResource ButtonMain}" Content="Подключится к нововой комнате" HorizontalAlignment="Left" Margin="612,107,0,0" VerticalAlignment="Top" Width="322" Click="ConnectToNewRoomButtonClick"/>
+        <Button x:Name="createNewRoomButton" Style="{DynamicResource ButtonMain}" Content="Создать новую комнату" HorizontalAlignment="Left" Margin="612,137,0,0" VerticalAlignment="Top" Width="322" Click="CreateNewRoomButtonClick"/>
         <Button x:Name="connectToRoomButton" Style="{DynamicResource ButtonMain}" Content="Подключится" HorizontalAlignment="Left" Margin="612,71,0,0" VerticalAlignment="Top" Width="322" Height="31" Click="ConnectToRoomButtonClick"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="612,470,0,0" VerticalAlignment="Top" Width="322" Click="GoBackButtonClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="612,10,0,0" TextWrapping="Wrap" Text="Id персонажа" VerticalAlignment="Top" Width="322" Height="28" TextAlignment="Center" FontSize="18"/>
         <TextBox x:Name="characterIdTextBox" HorizontalAlignment="Left" Height="23" Margin="612,43,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="322" Background="#7FFFFFFF"/>
+        <Button x:Name="deleteRoomButton" Style="{DynamicResource ButtonMain}" Content="Удалить" HorizontalAlignment="Left" Margin="612,205,0,0" VerticalAlignment="Top" Width="322" Height="31" Click="DeleteRoomButtonClick"/>
     </Grid>
 </Page>

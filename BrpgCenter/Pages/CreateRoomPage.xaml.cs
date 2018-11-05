@@ -61,7 +61,7 @@ namespace BrpgCenter
 
                 if (character != null)
                 {
-                    Client client = new Client(room.Ip, room.Port, pocket.Player, character);
+                    ChatClient client = new ChatClient(room.Ip, room.Port, pocket.Player, character);
                     pocket.MainWindow.Content = new RoomPage(pocket, client, room, true, character);
                 }
                 else

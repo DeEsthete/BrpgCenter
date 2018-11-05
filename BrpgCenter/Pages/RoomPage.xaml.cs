@@ -25,19 +25,22 @@ namespace BrpgCenter
         private MainPocket pocket;
         private Room room;
         private bool isHost;
-        private Client client;
+        private ChatClient chatClient;
+        private StateClient stateClient;
 
-        public RoomPage(MainPocket pocket, Client client, Room room, bool isHost, Character character)
+        public RoomPage(MainPocket pocket, ChatClient chatClient, Room room, bool isHost, Character character)
         {
             InitializeComponent();
             this.pocket = pocket;
-            this.client = client;
             this.room = room;
             this.isHost = isHost;
-
-            client.AcceptServerFirstMessage();
+            this.stateClient = new StateClient(room.Ip, room.Port, pocket.Player, character);
+            this.chatClient = chatClient;
+            
             AcceptServerFirstMessage();
-            client.ReceiveMessage();
+            chatClient.ReceiveMessage();
+            stateClient.StartReceive();
+            ApplyPlayersInRoom();
 
             AddMessageToListBox();
 
@@ -49,7 +52,8 @@ namespace BrpgCenter
 
         private async void AcceptServerFirstMessage()
         {
-            if (client.IsConnected)
+            chatClient.AcceptServerFirstMessage();
+            if (chatClient.IsConnected)
             {
                 await AcceptServerFirstMessageWork();
             }
@@ -59,12 +63,12 @@ namespace BrpgCenter
         {
             return Task.Run(() =>
             {
-                ServerFirstMessage firstMessage = client.ServerFirstMessage;
+                ServerFirstMessage firstMessage = chatClient.ServerFirstMessage;
                 bool serverMessageIsOk = false;
                 while (!serverMessageIsOk)
                 {
                     Thread.Sleep(500);
-                    firstMessage = client.ServerFirstMessage;
+                    firstMessage = chatClient.ServerFirstMessage;
                     if (firstMessage != null)
                     {
                         serverMessageIsOk = true;
@@ -83,27 +87,48 @@ namespace BrpgCenter
 
         #region timerMethods
 
-        public async void AddMessageToListBox()
+        private async void AddMessageToListBox()
         {
-            if (client.IsConnected)
+            if (chatClient.IsConnected)
             {
                 await AddMessageToListBoxWork(null);
             }
         }
 
-        public Task AddMessageToListBoxWork(object obj)
+        private Task AddMessageToListBoxWork(object obj)
         {
             return Task.Run(() =>
             {
                 while (true)
                 {
                     Thread.Sleep(1000);
-                    foreach (var i in client.Messages)
+                    foreach (var i in chatClient.Messages)
                     {
-                        //Dispatcher.Invoke(() => chatListBox.Items.Add(i.Content));
                         Dispatcher.Invoke(() => chatListBox.Items.Insert(0,i.SenderName + ": " + i.Content));
                     }
-                    client.Messages.Clear();
+                    chatClient.Messages.Clear();
+                }
+            });
+        }
+
+        private async void ApplyPlayersInRoom()
+        {
+            await ApplyPlayersInRoomWork();
+        }
+
+        private Task ApplyPlayersInRoomWork()
+        {
+            return Task.Run(() =>
+            {
+                while (true)
+                {
+                    Dispatcher.Invoke(() => playersListBox.Items.Clear());
+                    foreach (var i in stateClient.PlayersInRoom)
+                    {
+                        Dispatcher.Invoke(() => playersListBox.Items.Insert(0, i.NickName));
+                    }
+                    stateClient.PlayersInRoom.Clear();
+                    Thread.Sleep(5100);
                 }
             });
         }
@@ -112,7 +137,9 @@ namespace BrpgCenter
         #region ButtonMethods
         private void SendButtonClick(object sender, RoutedEventArgs e)
         {
-            client.SendMessage(new ChatMessage(pocket.Player.NickName, messageFieldTextBox.Text));
+            chatClient.SendMessage(new ChatMessage(pocket.Player.NickName, messageFieldTextBox.Text));
+            chatListBox.Items.Add("Вы: " + messageFieldTextBox.Text);
+            messageFieldTextBox.Text = "";
         }
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)
@@ -122,8 +149,15 @@ namespace BrpgCenter
 
         private void GoChatButtonClick(object sender, RoutedEventArgs e)
         {
+            charactersGrid.Visibility = Visibility.Hidden;
             chatGrid.Visibility = Visibility.Visible;
         }
         #endregion
+
+        private void goCharactersButton_Click(object sender, RoutedEventArgs e)
+        {
+            chatGrid.Visibility = Visibility.Hidden;
+            charactersGrid.Visibility = Visibility.Visible;
+        }
     }
 }

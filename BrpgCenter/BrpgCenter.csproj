@@ -68,10 +68,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BrpgCenterContext.cs" />
-    <Compile Include="NetCode\Client.cs" />
-    <Compile Include="NetCode\FirstMessage.cs" />
-    <Compile Include="NetCode\ChatMessage.cs" />
-    <Compile Include="NetCode\ClientObject.cs" />
+    <Compile Include="NetCode\ClientType.cs" />
+    <Compile Include="NetCode\Client\ChatClient.cs" />
+    <Compile Include="NetCode\Client\Client.cs" />
+    <Compile Include="NetCode\Messages\FirstMessage.cs" />
+    <Compile Include="NetCode\Messages\ChatMessage.cs" />
+    <Compile Include="NetCode\Server\ClientObject.cs" />
     <Compile Include="Pages\CharacterPageThird.xaml.cs">
       <DependentUpon>CharacterPageThird.xaml</DependentUpon>
     </Compile>
@@ -113,11 +115,12 @@
     <Compile Include="Pages\RoomsPage.xaml.cs">
       <DependentUpon>RoomsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NetCode\ServerObject.cs" />
-    <Compile Include="NetCode\ServerFirstMessage.cs" />
+    <Compile Include="NetCode\Server\ServerObject.cs" />
+    <Compile Include="NetCode\Messages\ServerFirstMessage.cs" />
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NetCode\Client\StateClient.cs" />
     <Page Include="Pages\CharacterPageThird.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

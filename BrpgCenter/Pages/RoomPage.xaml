@@ -13,7 +13,13 @@
             <ImageBrush ImageSource="/BrpgCenter;component/Images/roomBackground.png"/>
         </Grid.Background>
         <Rectangle Fill="#7F000000" HorizontalAlignment="Left" Height="472" Stroke="#7F000000" VerticalAlignment="Top" Width="205"/>
-        <ListBox x:Name="playersListBox" HorizontalAlignment="Left" Height="423" Margin="0,49,0,0" VerticalAlignment="Top" Width="205" Style="{DynamicResource ListBoxMain}" Background="#0CFFFFFF" BorderBrush="#00747474"/>
+        <ListBox x:Name="playersListBox" HorizontalAlignment="Left" Height="423" Margin="0,49,0,0" VerticalAlignment="Top" Width="205" Style="{DynamicResource ListBoxMain}" Background="#0CFFFFFF" BorderBrush="#00747474">
+            <ListBox.ItemContainerStyle>
+                <Style>
+                    <Setter Property="ListBoxItem.Foreground" Value="White"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
         <Button x:Name="filesSafeButton" Content="Хранилище файлов" HorizontalAlignment="Left" Margin="-772,464,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
         <TextBlock x:Name="masterPlayerName" HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="MasterPlayerName" VerticalAlignment="Top" Style="{DynamicResource MainText}" Width="205" TextAlignment="Center" Height="34" FontSize="20" Foreground="White"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="0,477,0,0" VerticalAlignment="Top" Width="200" Click="GoBackButtonClick"/>
@@ -22,7 +28,7 @@
                 <Button x:Name="goChatButton" Content="Чат" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000" Click="GoChatButtonClick"/>
                 <Button x:Name="goCanvasButton" Content="Холст" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000"/>
                 <Button x:Name="goStorageButton" Content="Хранилище" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000"/>
-                <Button x:Name="goCharactersButton" Content="Персонажи" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000"/>
+                <Button x:Name="goCharactersButton" Content="Персонажи" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000" Click="goCharactersButton_Click"/>
             </StackPanel>
         </ScrollViewer>
         <Grid x:Name="chatGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
@@ -31,6 +37,10 @@
             <Button x:Name="sendButton" Content="Отправить" HorizontalAlignment="Left" Margin="611,365,0,0" VerticalAlignment="Top" Width="128" Height="35" Background="#66FFFFFF" FontSize="18" Click="SendButtonClick"/>
             <Button x:Name="rollDice" Content="Кинуть кубики" HorizontalAlignment="Left" Margin="3,405,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
         </Grid>
-
+        <Grid Visibility="Hidden" x:Name="charactersGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
+            <ListBox x:Name="charactersListBox" HorizontalAlignment="Left" Height="383" Margin="10,10,0,0" VerticalAlignment="Top" Width="719" Style="{DynamicResource ListBoxMain}"/>
+            <Button x:Name="editCharacterButton" Content="Редактировать персонажа" HorizontalAlignment="Left" Margin="10,398,0,0" VerticalAlignment="Top" Width="268" Height="30" Style="{DynamicResource ButtonMain}"/>
+            <Button x:Name="addNewCharacterButton" Content="Добавить нового персонажа" HorizontalAlignment="Left" Margin="461,398,0,0" VerticalAlignment="Top" Width="268" Height="30" Style="{DynamicResource ButtonMain}"/>
+        </Grid>
     </Grid>
 </Page>
