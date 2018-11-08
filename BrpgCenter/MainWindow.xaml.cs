@@ -44,6 +44,7 @@ namespace BrpgCenter
             pocket.Player.CountRooms = pocket.Context.Rooms.Count();
             //pocket.Context.Characters.Add(new Character());
 
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\PlayerData\");
             pocket.Player = ReadPlayerFile();
             if (pocket.Player == null)
             {
@@ -63,13 +64,14 @@ namespace BrpgCenter
         private void MainWindowClosed(object sender, EventArgs e)
         {
             pocket.Context.SaveChanges();
+            WritePlayerFile(pocket.Player);
         }
 
         #region dataWork
         public static void WritePlayerFile(Player pack)
         {
             string serialized = JsonConvert.SerializeObject(pack);
-            using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\" + "PlayerInfo" + ".json", FileMode.OpenOrCreate))
+            using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\PlayerData\" + "PlayerInfo" + ".json", FileMode.OpenOrCreate))
             {
                 byte[] array = System.Text.Encoding.Default.GetBytes(serialized);
                 fstream.Write(array, 0, array.Length);
@@ -80,7 +82,7 @@ namespace BrpgCenter
             string json;
             try
             {
-                using (FileStream fstream = File.OpenRead(Directory.GetCurrentDirectory() + @"\" + "PlayerInfo" + ".json"))
+                using (FileStream fstream = File.OpenRead(Directory.GetCurrentDirectory() + @"\PlayerData\" + "PlayerInfo" + ".json"))
                 {
                     byte[] array = new byte[fstream.Length];
                     fstream.Read(array, 0, array.Length);

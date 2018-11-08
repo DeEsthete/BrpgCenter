@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BrpgCenter
 {
@@ -13,12 +14,20 @@ namespace BrpgCenter
 
         public ChatClient(string address, int port, Player player, Character character) : base(address, port, player, character)
         {
-            FirstMessage message = new FirstMessage(ClientType.ChatClient, Player, Character);
-            string serialized = JsonConvert.SerializeObject(message);
-            byte[] data = Encoding.Unicode.GetBytes(serialized);
-            Stream.Write(data, 0, data.Length);
-            IsConnected = true;
-            Messages = new List<ChatMessage>();
+            try
+            {
+                FirstMessage message = new FirstMessage(ClientType.ChatClient, Player, Character);
+                string serialized = JsonConvert.SerializeObject(message);
+                byte[] data = Encoding.Unicode.GetBytes(serialized);
+                Stream.Write(data, 0, data.Length);
+                IsConnected = true;
+                Messages = new List<ChatMessage>();
+            }
+            catch (Exception)
+            {
+                IsConnected = false;
+                MessageBox.Show("Хост не найден");
+            }
         }
 
         // отправка сообщений
@@ -70,7 +79,7 @@ namespace BrpgCenter
                         ChatMessage message = JsonConvert.DeserializeObject<ChatMessage>(serialized);
                         Messages.Add(message);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         Disconnect();
                     }

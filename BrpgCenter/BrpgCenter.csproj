@@ -68,6 +68,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BrpgCenterContext.cs" />
+    <Compile Include="NetCode\CharacterMessageType.cs" />
+    <Compile Include="NetCode\Messages\CharacterMessage.cs" />
+    <Compile Include="NetCode\Client\CharactersClient.cs" />
     <Compile Include="NetCode\ClientType.cs" />
     <Compile Include="NetCode\Client\ChatClient.cs" />
     <Compile Include="NetCode\Client\Client.cs" />
@@ -212,7 +215,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

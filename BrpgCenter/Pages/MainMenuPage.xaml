@@ -13,7 +13,7 @@
             <ImageBrush ImageSource="/BrpgCenter;component/Images/mainBackground.png"/>
         </Grid.Background>
         <Rectangle Fill="#4CFFFFFF" HorizontalAlignment="Left" Height="509" Stroke="Black" VerticalAlignment="Top" Width="249"/>
-        <Image HorizontalAlignment="Left" Height="144" VerticalAlignment="Top" Width="144" Margin="51,24,0,0" Source="/BrpgCenter;component/Images/noAvatar.png"/>
+        <Image x:Name="avatarImage" HorizontalAlignment="Left" Height="144" VerticalAlignment="Top" Width="144" Margin="51,24,0,0" Source="/BrpgCenter;component/Images/noAvatar.png"/>
         <TextBlock x:Name="nickNameTextBlock" HorizontalAlignment="Left" Margin="10,173,0,0" TextWrapping="Wrap" Text="nickNameTextBlock" VerticalAlignment="Top" Width="230" TextAlignment="Center" FontSize="20"/>
         <Button Style="{DynamicResource ButtonMain}" x:Name="profileSettingsButton" Content="Настроить профиль" HorizontalAlignment="Left" Margin="0,479,0,0" VerticalAlignment="Top" Width="249" Click="ProfileSettingsButtonClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="535,10,0,0" TextWrapping="Wrap" Text="BrpgCenter" VerticalAlignment="Top" FontFamily="Pristina" FontSize="48"/>

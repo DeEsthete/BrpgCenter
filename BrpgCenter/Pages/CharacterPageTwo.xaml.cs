@@ -22,6 +22,7 @@ namespace BrpgCenter
     {
         private MainPocket pocket;
         private Character character;
+        private CharactersClient charactersClient;
 
         public CharacterPageTwo(MainPocket pocket, Character character)
         {
@@ -43,11 +44,36 @@ namespace BrpgCenter
             fatigueTextBox.Text = character.Fatigue;
         }
 
+        public CharacterPageTwo(MainPocket pocket, Character character, CharactersClient client)
+        {
+            InitializeComponent();
+            this.pocket = pocket;
+            this.character = character;
+            charactersClient = client;
+
+            mvTextBox.Text = character.Move.ToString();
+            spTextBox.Text = character.Speed.ToString();
+            wlTextBox.Text = character.Will.ToString();
+            prTextBox.Text = character.Per.ToString();
+            fpTextBox.Text = character.FP.ToString();
+            stTextBox.Text = character.ST.ToString();
+            dxTextBox.Text = character.DX.ToString();
+            iqTextBox.Text = character.IQ.ToString();
+            htTextBox.Text = character.HT.ToString();
+            hpTextBox.Text = character.HP.ToString();
+            woundsTextBox.Text = character.Wounds;
+            fatigueTextBox.Text = character.Fatigue;
+        }
+
         private void GoBackButtonClick(object sender, RoutedEventArgs e)
         {
             ApplyChanged();
             if (pocket.CurrentRoom != null)
             {
+                if (charactersClient != null)
+                {
+                    charactersClient.SendCharacterChanged(character);
+                }
                 pocket.MainWindow.Content = pocket.CurrentRoom;
             }
             else
@@ -82,13 +108,13 @@ namespace BrpgCenter
         private void BeforeButtonClick(object sender, RoutedEventArgs e)
         {
             ApplyChanged();
-            pocket.MainWindow.Content = new CharacterPageOne(pocket, character);
+            pocket.MainWindow.Content = new CharacterPageOne(pocket, character, charactersClient);
         }
 
         private void AfterButtonClick(object sender, RoutedEventArgs e)
         {
             ApplyChanged();
-            pocket.MainWindow.Content = new CharacterPageThird(pocket, character);
+            pocket.MainWindow.Content = new CharacterPageThird(pocket, character, charactersClient);
         }
     }
 }

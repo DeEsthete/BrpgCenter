@@ -45,6 +45,10 @@ namespace BrpgCenter
             {
                 StateProcess();
             }
+            else if (Type == ClientType.CharactersClient)
+            {
+                CharactersProcess();
+            }
         }
         #region Processes
 
@@ -102,8 +106,61 @@ namespace BrpgCenter
                 Close();
             }
         }
+
+        private void CharactersProcess()
+        {
+            try
+            {
+                while (true)
+                {
+                    CharacterMessage message = GetCharacterMessage();
+                    if (message.Type == CharacterMessageType.SendCharacter)
+                    {
+                        if (message.Character != null)
+                        {
+                            Server.UploadCharacterToOwner(message);
+                        }
+                    }
+                    else if (message.Type == CharacterMessageType.AcceptCharacters)
+                    {
+                        message.Characters = Server.GetAllCharacters();
+                        message.Type = CharacterMessageType.SendCharacters;
+                        string serialized = JsonConvert.SerializeObject(message);
+                        byte[] data = Encoding.Unicode.GetBytes(serialized);
+                        Stream.Write(data, 0, data.Length);
+                    }
+                    else if (message.Type == CharacterMessageType.AcceptCharacter)
+                    {
+                        if (message.CharacterOwner != null)
+                        {
+                            message = Server.GetCharacterByOwner(message);
+                            message.Type = CharacterMessageType.SendCharacter;
+                            string serialized = JsonConvert.SerializeObject(message);
+                            byte[] data = Encoding.Unicode.GetBytes(serialized);
+                            Stream.Write(data, 0, data.Length);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                Server.RemoveConnection(this.Id);
+                Close();
+            }
+        }
         #endregion
         #region Gets
+
+        private CharacterMessage GetCharacterMessage()
+        {
+            string serialized = GetSerializedString();
+            return JsonConvert.DeserializeObject<CharacterMessage>(serialized);
+        }
+
         private FirstMessage GetFirstMessage()
         {
             string serialized = GetSerializedString();

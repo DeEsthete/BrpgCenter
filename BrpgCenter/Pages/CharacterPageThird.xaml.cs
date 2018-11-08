@@ -22,6 +22,8 @@ namespace BrpgCenter
     {
         private MainPocket pocket;
         private Character character;
+        private CharactersClient charactersClient;
+
         public CharacterPageThird(MainPocket pocket, Character character)
         {
             InitializeComponent();
@@ -35,10 +37,24 @@ namespace BrpgCenter
             equipTextBox.Text = character.Equip;
         }
 
+        public CharacterPageThird(MainPocket pocket, Character character, CharactersClient client)
+        {
+            InitializeComponent();
+            this.pocket = pocket;
+            this.character = character;
+            charactersClient = client;
+
+            raceTextBox.Text = character.Race;
+            birthdayTextBox.Text = character.Birthday;
+            advaDisTextBox.Text = character.AdvantagesDisadvantages;
+            skillsTextBox.Text = character.Skills;
+            equipTextBox.Text = character.Equip;
+        }
+
         private void BeforeButtonClick(object sender, RoutedEventArgs e)
         {
             ApplyChanged();
-            pocket.MainWindow.Content = new CharacterPageTwo(pocket, character);
+            pocket.MainWindow.Content = new CharacterPageTwo(pocket, character, charactersClient);
         }
 
         private void AfterButtonClick(object sender, RoutedEventArgs e)
@@ -51,6 +67,10 @@ namespace BrpgCenter
             ApplyChanged();
             if (pocket.CurrentRoom != null)
             {
+                if (charactersClient != null)
+                {
+                    charactersClient.SendCharacterChanged(character);
+                }
                 pocket.MainWindow.Content = pocket.CurrentRoom;
             }
             else

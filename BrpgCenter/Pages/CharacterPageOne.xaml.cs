@@ -22,6 +22,8 @@ namespace BrpgCenter
     {
         private MainPocket pocket;
         private Character character;
+        private CharactersClient charactersClient;
+
         public CharacterPageOne(MainPocket pocket, Character character)
         {
             InitializeComponent();
@@ -39,16 +41,34 @@ namespace BrpgCenter
             tlTextBox.Text = character.TL.ToString();
         }
 
+        public CharacterPageOne(MainPocket pocket, Character character, CharactersClient client)
+        {
+            InitializeComponent();
+            this.pocket = pocket;
+            this.character = character;
+            charactersClient = client;
+
+            eyeDescriptionTextBox.Text = character.Eyes;
+            hairTextBox.Text = character.Hair;
+            mainHandTextBox.Text = character.MainHand;
+            religionTextBox.Text = character.Religion;
+            genderTextBox.Text = character.Gender;
+            growthTextBox.Text = character.Growth.ToString();
+            weightTextBox.Text = character.Weight.ToString();
+            smTextBox.Text = character.SM.ToString();
+            tlTextBox.Text = character.TL.ToString();
+        }
+
         private void BeforeButtonClick(object sender, RoutedEventArgs e)
         {
             ApplyChanged();
-            pocket.MainWindow.Content = new CharacterPage(pocket);
+            pocket.MainWindow.Content = new CharacterPage(pocket, character, charactersClient);
         }
 
         private void AfterButtonClick(object sender, RoutedEventArgs e)
         {
             ApplyChanged();
-            pocket.MainWindow.Content = new CharacterPageTwo(pocket, character);
+            pocket.MainWindow.Content = new CharacterPageTwo(pocket, character, charactersClient);
         }
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)
@@ -56,6 +76,10 @@ namespace BrpgCenter
             ApplyChanged();
             if (pocket.CurrentRoom != null)
             {
+                if (charactersClient != null)
+                {
+                    charactersClient.SendCharacterChanged(character);
+                }
                 pocket.MainWindow.Content = pocket.CurrentRoom;
             }
             else

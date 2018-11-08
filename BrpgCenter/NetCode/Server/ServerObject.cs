@@ -68,7 +68,49 @@ namespace BrpgCenter
                 }
             });
         }
-        
+
+        #region ClientObjectMethods
+
+        public List<Character> GetAllCharacters()
+        {
+            List<Character> characters = new List<Character>();
+            foreach (var i in Clients)
+            {
+                if (i.Type == ClientType.ChatClient)
+                {
+                    if (i.Character != null)
+                    {
+                        i.Character.Owner = i.Player;
+                        characters.Add(i.Character);
+                    }
+                }
+            }
+            return characters;
+        }
+
+        public CharacterMessage GetCharacterByOwner(CharacterMessage message)
+        {
+            foreach (var i in Clients)
+            {
+                if (i.Player == message.CharacterOwner)
+                {
+                    message.Character = i.Character;
+                }
+            }
+            return message;
+        }
+
+        public void UploadCharacterToOwner(CharacterMessage message)
+        {
+            foreach (var i in Clients)
+            {
+                if (i.Player.Id == message.CharacterOwner.Id)
+                {
+                    i.Character = message.Character;
+                }
+            }
+        }
+
         public void BroadcastMessage(ChatMessage message, string id)
         {
             string serialized = JsonConvert.SerializeObject(message);
@@ -108,12 +150,13 @@ namespace BrpgCenter
             {
                 message.Players.Add(Clients[i].Player);
             }
-            
+
             string serialized = JsonConvert.SerializeObject(message);
             byte[] data = Encoding.Unicode.GetBytes(serialized);
             client.Stream.Write(data, 0, data.Length);
         }
-        
+        #endregion
+
         public void Disconnect()
         {
             TcpListener.Stop();

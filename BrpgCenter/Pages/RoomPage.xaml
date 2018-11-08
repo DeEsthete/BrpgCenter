@@ -28,19 +28,19 @@
                 <Button x:Name="goChatButton" Content="Чат" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000" Click="GoChatButtonClick"/>
                 <Button x:Name="goCanvasButton" Content="Холст" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000"/>
                 <Button x:Name="goStorageButton" Content="Хранилище" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000"/>
-                <Button x:Name="goCharactersButton" Content="Персонажи" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000" Click="goCharactersButton_Click"/>
+                <Button x:Name="goCharactersButton" Content="Персонажи" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000" Click="GoCharactersButtonClick"/>
             </StackPanel>
         </ScrollViewer>
-        <Grid x:Name="chatGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
+        <Grid Visibility="Hidden" x:Name="chatGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
             <ListBox x:Name="chatListBox" HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" Width="739" Background="#3EFFFFFF"/>
             <TextBox x:Name="messageFieldTextBox" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="MessageText" VerticalAlignment="Top" Width="606" Background="#59FFFFFF" FontSize="20" Margin="0,365,0,0"/>
             <Button x:Name="sendButton" Content="Отправить" HorizontalAlignment="Left" Margin="611,365,0,0" VerticalAlignment="Top" Width="128" Height="35" Background="#66FFFFFF" FontSize="18" Click="SendButtonClick"/>
             <Button x:Name="rollDice" Content="Кинуть кубики" HorizontalAlignment="Left" Margin="3,405,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
         </Grid>
-        <Grid Visibility="Hidden" x:Name="charactersGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
+        <Grid x:Name="charactersGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
             <ListBox x:Name="charactersListBox" HorizontalAlignment="Left" Height="383" Margin="10,10,0,0" VerticalAlignment="Top" Width="719" Style="{DynamicResource ListBoxMain}"/>
-            <Button x:Name="editCharacterButton" Content="Редактировать персонажа" HorizontalAlignment="Left" Margin="10,398,0,0" VerticalAlignment="Top" Width="268" Height="30" Style="{DynamicResource ButtonMain}"/>
-            <Button x:Name="addNewCharacterButton" Content="Добавить нового персонажа" HorizontalAlignment="Left" Margin="461,398,0,0" VerticalAlignment="Top" Width="268" Height="30" Style="{DynamicResource ButtonMain}"/>
+            <Button x:Name="editCharacterButton" Content="Редактировать персонажа" HorizontalAlignment="Left" Margin="185,398,0,0" VerticalAlignment="Top" Width="364" Height="30" Style="{DynamicResource ButtonMain}" Click="EditCharacterButtonClick"/>
+            <!--<Button x:Name="addNewCharacterButton" Content="Добавить нового персонажа" HorizontalAlignment="Left" Margin="461,398,0,0" VerticalAlignment="Top" Width="268" Height="30" Style="{DynamicResource ButtonMain}"/>-->
         </Grid>
     </Grid>
 </Page>

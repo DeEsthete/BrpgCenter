@@ -22,11 +22,15 @@ namespace BrpgCenter
     /// </summary>
     public partial class RoomPage : Page
     {
+        private const int SLEEP_TIME_COMMON = 2000;
+        private const int SLEEP_TIME_IMPORTANT = 500;
+
         private MainPocket pocket;
         private Room room;
         private bool isHost;
         private ChatClient chatClient;
         private StateClient stateClient;
+        private CharactersClient charactersClient;
 
         public RoomPage(MainPocket pocket, ChatClient chatClient, Room room, bool isHost, Character character)
         {
@@ -36,13 +40,18 @@ namespace BrpgCenter
             this.isHost = isHost;
             this.stateClient = new StateClient(room.Ip, room.Port, pocket.Player, character);
             this.chatClient = chatClient;
+            this.charactersClient = new CharactersClient(room.Ip, room.Port, pocket.Player, character);
             
             AcceptServerFirstMessage();
+
             chatClient.ReceiveMessage();
+            AddMessageToListBox();
+
             stateClient.StartReceive();
             ApplyPlayersInRoom();
 
-            AddMessageToListBox();
+            charactersClient.StartReceive();
+            ApplyCharactersInRoom();
 
             if (room.GameMaster != null)
             {
@@ -101,7 +110,7 @@ namespace BrpgCenter
             {
                 while (true)
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(SLEEP_TIME_IMPORTANT);
                     foreach (var i in chatClient.Messages)
                     {
                         Dispatcher.Invoke(() => chatListBox.Items.Insert(0,i.SenderName + ": " + i.Content));
@@ -127,8 +136,31 @@ namespace BrpgCenter
                     {
                         Dispatcher.Invoke(() => playersListBox.Items.Insert(0, i.NickName));
                     }
-                    stateClient.PlayersInRoom.Clear();
-                    Thread.Sleep(5100);
+                    //stateClient.PlayersInRoom.Clear();
+                    Thread.Sleep(SLEEP_TIME_COMMON);
+                }
+            });
+        }
+
+        private async void ApplyCharactersInRoom()
+        {
+            await ApplyCharactersInRoomWork();
+        }
+
+        private Task ApplyCharactersInRoomWork()
+        {
+            return Task.Run(() =>
+            {
+                while (true)
+                {
+                    object currentSelected = Dispatcher.Invoke(() => charactersListBox.SelectedItem);
+                    Dispatcher.Invoke(() => charactersListBox.Items.Clear());
+                    foreach (var i in charactersClient.CharactersInRoom)
+                    {
+                        Dispatcher.Invoke(() => charactersListBox.Items.Insert(0, "Владелец: " + i.Owner.NickName + " Имя: " + i.FullName));
+                    }
+                    Dispatcher.Invoke(() => charactersListBox.SelectedItem = currentSelected);
+                    Thread.Sleep(SLEEP_TIME_COMMON);
                 }
             });
         }
@@ -152,12 +184,22 @@ namespace BrpgCenter
             charactersGrid.Visibility = Visibility.Hidden;
             chatGrid.Visibility = Visibility.Visible;
         }
-        #endregion
 
-        private void goCharactersButton_Click(object sender, RoutedEventArgs e)
+        private void GoCharactersButtonClick(object sender, RoutedEventArgs e)
         {
             chatGrid.Visibility = Visibility.Hidden;
             charactersGrid.Visibility = Visibility.Visible;
         }
+
+        private void EditCharacterButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (charactersListBox.SelectedIndex != -1)
+            {
+                Character character = charactersClient.CharactersInRoom[charactersListBox.SelectedIndex];
+                pocket.CurrentRoom = this;
+                pocket.MainWindow.Content = new CharacterPage(pocket, character, charactersClient);
+            }
+        }
+        #endregion
     }
 }

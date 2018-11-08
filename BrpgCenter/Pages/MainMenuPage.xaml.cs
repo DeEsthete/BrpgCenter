@@ -33,6 +33,10 @@ namespace BrpgCenter
                 pocket.LanguageManager.Languages[pocket.LanguageManager.CurrentLanguage].Apllying(this);
             }
 
+            if (pocket.Player.PathToImage != "none" && pocket.Player.PathToImage != null)
+            {
+                avatarImage.Source = new BitmapImage(new Uri(pocket.Player.PathToImage, UriKind.RelativeOrAbsolute));
+            }
             nickNameTextBlock.Text = pocket.Player.NickName;
             countRoomsTextBlock.Text = pocket.Player.CountRooms.ToString();
             countCharactersTextBlock.Text = pocket.Player.CountCharactaers.ToString();
