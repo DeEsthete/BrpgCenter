@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -31,6 +33,8 @@ namespace BrpgCenter
         private ChatClient chatClient;
         private StateClient stateClient;
         private CharactersClient charactersClient;
+        private StorageClient storageClient;
+        private Paint paint;
 
         public RoomPage(MainPocket pocket, ChatClient chatClient, Room room, bool isHost, Character character)
         {
@@ -38,9 +42,11 @@ namespace BrpgCenter
             this.pocket = pocket;
             this.room = room;
             this.isHost = isHost;
-            this.stateClient = new StateClient(room.Ip, room.Port, pocket.Player, character);
             this.chatClient = chatClient;
+            this.stateClient = new StateClient(room.Ip, room.Port, pocket.Player, character);
             this.charactersClient = new CharactersClient(room.Ip, room.Port, pocket.Player, character);
+            this.storageClient = new StorageClient(room.Ip, room.Port, pocket.Player, character);
+            paint = new Paint();
             
             AcceptServerFirstMessage();
 
@@ -52,6 +58,11 @@ namespace BrpgCenter
 
             charactersClient.StartReceive();
             ApplyCharactersInRoom();
+
+            storageClient.StartReceive();
+            ApplyFilesInStorage();
+
+            colorPicker.SelectedColor = paint.Color;
 
             if (room.GameMaster != null)
             {
@@ -94,6 +105,133 @@ namespace BrpgCenter
             });
         }
 
+        #region PaintMethods
+        private void CanvasMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ButtonState == MouseButtonState.Pressed)
+                paint.CurrentPoint = e.GetPosition(canvas);
+        }
+        private void CanvasMouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                Line line = new Line
+                {
+                    Stroke = new SolidColorBrush(paint.Color),
+                    X1 = paint.CurrentPoint.X,
+                    Y1 = paint.CurrentPoint.Y,
+                    X2 = e.GetPosition(canvas).X,
+                    Y2 = e.GetPosition(canvas).Y
+                };
+
+                paint.CurrentPoint = e.GetPosition(canvas);
+                canvas.Children.Add(line);
+            }
+        }
+
+        private void CanvasMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            List<Line> lines = new List<Line>();
+            foreach (var obj in canvas.Children)
+            {
+                if (obj is Line line)
+                {
+                    lines.Add(line);
+                }
+            }
+
+            paint.Mementos.Add(new Memento(lines));
+            paint.RemovedMemento.Clear();
+        }
+
+        private void CanvasMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (paint.Mementos.Any())
+            {
+                if (paint.Mementos.Count == 1)
+                {
+                    ToMemento(paint.Mementos[0]);
+                }
+                else
+                {
+                    paint.RemovedMemento.Add(paint.Mementos.Last());
+                    paint.Mementos.Remove(paint.Mementos.Last());
+                    if (paint.Mementos.Any())
+                    {
+                        ToMemento(paint.Mementos.Last());
+                    }
+                }
+            }
+        }
+
+        private void ToMemento(Memento memento)
+        {
+            canvas.Children.Clear();
+            foreach (var line in memento.Lines)
+            {
+                canvas.Children.Add(line);
+            }
+        }
+
+        private void BackButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (paint.RemovedMemento.Any())
+            {
+                ToMemento(paint.RemovedMemento.Last());
+                paint.Mementos.Add(paint.RemovedMemento.Last());
+                paint.RemovedMemento.Remove(paint.RemovedMemento.Last());
+            }
+        }
+
+        private void ColorPickerSelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            if (e.NewValue.HasValue)
+            {
+                paint.Color = e.NewValue.Value;
+            }
+        }
+
+        private void SaveButtonClick(object sender, RoutedEventArgs e)
+        {
+            
+            //SaveFileDialog fileDialog = new SaveFileDialog
+            //{
+            //    FileName = "image",
+            //    DefaultExt = ".png",
+            //    Filter = "Png images (.png)|*.png"
+            //};
+
+            //bool? result = fileDialog.ShowDialog();
+
+            //if (result == true)
+            //{
+            //    string fileName = fileDialog.FileName;
+
+            //    Rect rect = new Rect(canvas.Margin.Left, canvas.Margin.Top, canvas.ActualWidth, canvas.ActualHeight);
+            //    double dpi = 96d;
+
+            //    RenderTargetBitmap rtb = new RenderTargetBitmap((int)rect.Right, (int)rect.Bottom, dpi, dpi, PixelFormats.Default);
+            //    rtb.Render(canvas);
+
+            //    BitmapEncoder encoder = new PngBitmapEncoder();
+            //    encoder.Frames.Add(BitmapFrame.Create(rtb));
+            //    try
+            //    {
+            //        using (MemoryStream stream = new MemoryStream())
+            //        {
+            //            encoder.Save(stream);
+            //            File.WriteAllBytes(fileName, stream.ToArray());
+            //        }
+            //        MessageBox.Show("Сохранено!");
+            //    }
+            //    catch (Exception error)
+            //    {
+            //        MessageBox.Show(error.Message);
+            //    }
+            //}
+        }
+        #endregion
+
         #region timerMethods
 
         private async void AddMessageToListBox()
@@ -129,15 +267,21 @@ namespace BrpgCenter
         {
             return Task.Run(() =>
             {
-                while (true)
+                try
                 {
-                    Dispatcher.Invoke(() => playersListBox.Items.Clear());
-                    foreach (var i in stateClient.PlayersInRoom)
+                    while (true)
                     {
-                        Dispatcher.Invoke(() => playersListBox.Items.Insert(0, i.NickName));
+                        Dispatcher.Invoke(() => playersListBox.Items.Clear());
+                        foreach (var i in stateClient.PlayersInRoom)
+                        {
+                            Dispatcher.Invoke(() => playersListBox.Items.Insert(0, i.NickName));
+                        }
+                        //stateClient.PlayersInRoom.Clear();
+                        Thread.Sleep(SLEEP_TIME_COMMON);
                     }
-                    //stateClient.PlayersInRoom.Clear();
-                    Thread.Sleep(SLEEP_TIME_COMMON);
+                }
+                catch (Exception)
+                {
                 }
             });
         }
@@ -164,6 +308,29 @@ namespace BrpgCenter
                 }
             });
         }
+
+        public async void ApplyFilesInStorage()
+        {
+            await ApplyFilesInStorageWork();
+        }
+
+        private Task ApplyFilesInStorageWork()
+        {
+            return Task.Run(() =>
+            {
+                while (true)
+                {
+                    object currentSelected = Dispatcher.Invoke(() => storageListBox.SelectedItem);
+                    Dispatcher.Invoke(() => storageListBox.Items.Clear());
+                    foreach (var i in storageClient.FileList)
+                    {
+                        Dispatcher.Invoke(() => storageListBox.Items.Insert(0, "Имя: " + i.Name + " Размер: " + i.Length));
+                    }
+                    Dispatcher.Invoke(() => storageListBox.SelectedItem = currentSelected);
+                    Thread.Sleep(SLEEP_TIME_COMMON);
+                }
+            });
+        }
         #endregion
 
         #region ButtonMethods
@@ -181,14 +348,34 @@ namespace BrpgCenter
 
         private void GoChatButtonClick(object sender, RoutedEventArgs e)
         {
+            paintGrid.Visibility = Visibility.Hidden;
             charactersGrid.Visibility = Visibility.Hidden;
+            storageGrid.Visibility = Visibility.Hidden;
             chatGrid.Visibility = Visibility.Visible;
         }
 
         private void GoCharactersButtonClick(object sender, RoutedEventArgs e)
         {
+            paintGrid.Visibility = Visibility.Hidden;
             chatGrid.Visibility = Visibility.Hidden;
+            storageGrid.Visibility = Visibility.Hidden;
             charactersGrid.Visibility = Visibility.Visible;
+        }
+
+        private void GoStorageButtonClick(object sender, RoutedEventArgs e)
+        {
+            paintGrid.Visibility = Visibility.Hidden;
+            chatGrid.Visibility = Visibility.Hidden;
+            charactersGrid.Visibility = Visibility.Hidden;
+            storageGrid.Visibility = Visibility.Visible;
+        }
+
+        public void GoCanvasButtonClick(object sender, RoutedEventArgs e)
+        {
+            chatGrid.Visibility = Visibility.Hidden;
+            charactersGrid.Visibility = Visibility.Hidden;
+            storageGrid.Visibility = Visibility.Hidden;
+            paintGrid.Visibility = Visibility.Visible;
         }
 
         private void EditCharacterButtonClick(object sender, RoutedEventArgs e)
@@ -198,6 +385,32 @@ namespace BrpgCenter
                 Character character = charactersClient.CharactersInRoom[charactersListBox.SelectedIndex];
                 pocket.CurrentRoom = this;
                 pocket.MainWindow.Content = new CharacterPage(pocket, character, charactersClient);
+            }
+        }
+
+        private void DownloadFileButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (storageListBox.SelectedIndex != -1)
+            {
+                storageClient.DownloadFile(storageClient.FileList[storageListBox.SelectedIndex]);
+            }
+        }
+
+        private void UploadFileButtonClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog myDialog = new OpenFileDialog
+            {
+                CheckFileExists = true,
+                Multiselect = true
+            };
+            if (myDialog.ShowDialog() == true)
+            {
+                FileInfo fileInfo = new FileInfo(myDialog.FileName);
+                storageClient.UploadFile(fileInfo);
+            }
+            else
+            {
+                MessageBox.Show("Во время выбора файла возникли некоторые ошибки, попробуйте еще раз!");
             }
         }
         #endregion

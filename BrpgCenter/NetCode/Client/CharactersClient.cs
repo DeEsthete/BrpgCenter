@@ -10,8 +10,6 @@ namespace BrpgCenter
 {
     public class CharactersClient : Client
     {
-        private const int SLEEP_TIME_COMMON = 2000;
-
         public List<Character> CharactersInRoom { get; set; }
 
         public CharactersClient(string address, int port, Player player, Character character) : base(address, port, player, character)

@@ -62,9 +62,7 @@ namespace BrpgCenter
             string serialized = JsonConvert.SerializeObject(pack);
             using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\" + name + ".json", FileMode.OpenOrCreate))
             {
-                // преобразуем строку в байты
                 byte[] array = System.Text.Encoding.Default.GetBytes(serialized);
-                // запись массива байтов в файл
                 fstream.Write(array, 0, array.Length);
             }
         }
@@ -73,11 +71,8 @@ namespace BrpgCenter
             string json;
             using (FileStream fstream = File.OpenRead(Directory.GetCurrentDirectory() + @"\" + name + ".json"))
             {
-                // преобразуем строку в байты
                 byte[] array = new byte[fstream.Length];
-                // считываем данные
                 fstream.Read(array, 0, array.Length);
-                // декодируем байты в строку
                 string textFromFile = System.Text.Encoding.Default.GetString(array);
                 json = textFromFile;
             }
@@ -89,9 +84,7 @@ namespace BrpgCenter
             string serialized = JsonConvert.SerializeObject(vs);
             using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\" + "Languages" + ".json", FileMode.OpenOrCreate))
             {
-                // преобразуем строку в байты
                 byte[] array = System.Text.Encoding.Default.GetBytes(serialized);
-                // запись массива байтов в файл
                 fstream.Write(array, 0, array.Length);
             }
         }
@@ -102,11 +95,8 @@ namespace BrpgCenter
                 string json;
                 using (FileStream fstream = File.OpenRead(Directory.GetCurrentDirectory() + @"\" + "Languages" + ".json"))
                 {
-                    // преобразуем строку в байты
                     byte[] array = new byte[fstream.Length];
-                    // считываем данные
                     fstream.Read(array, 0, array.Length);
-                    // декодируем байты в строку
                     string textFromFile = System.Text.Encoding.Default.GetString(array);
                     json = textFromFile;
                 }

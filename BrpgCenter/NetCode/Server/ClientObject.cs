@@ -49,6 +49,10 @@ namespace BrpgCenter
             {
                 CharactersProcess();
             }
+            else if (Type == ClientType.FileClient)
+            {
+                FileProcess();
+            }
         }
         #region Processes
 
@@ -152,8 +156,54 @@ namespace BrpgCenter
                 Close();
             }
         }
+
+        private void FileProcess()
+        {
+            try
+            {
+                while (true)
+                {
+                    FileMessage message = GetFileMessage();
+                    if (message.Type == FileMessageType.AcceptFileList)
+                    {
+                        message.Type = FileMessageType.SendFileList;
+                        message.FileList = Server.FileList;
+                        string serialized = JsonConvert.SerializeObject(message);
+                        byte[] data = Encoding.Unicode.GetBytes(serialized);
+                        Stream.Write(data, 0, data.Length);
+                    }
+                    else if (message.Type == FileMessageType.AcceptThisFile)
+                    {
+                        message.Type = FileMessageType.SendThisFile;
+                        message.FileContent = Server.GetThisFile(message.FileInfo);
+                        string serialized = JsonConvert.SerializeObject(message);
+                        byte[] data = Encoding.Unicode.GetBytes(serialized);
+                        Stream.Write(data, 0, data.Length);
+                    }
+                    else if (message.Type == FileMessageType.UploadFile)
+                    {
+                        Server.AddNewFile(message.FileInfo, message.FileContent);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                Server.RemoveConnection(this.Id);
+                Close();
+            }
+        }
         #endregion
         #region Gets
+
+        private FileMessage GetFileMessage()
+        {
+            string serialized = GetSerializedString();
+            return JsonConvert.DeserializeObject<FileMessage>(serialized);
+        }
 
         private CharacterMessage GetCharacterMessage()
         {

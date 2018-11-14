@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BrpgCenter"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
       mc:Ignorable="d" 
       d:DesignHeight="505" d:DesignWidth="944"
       Title="RoomPage">
@@ -20,14 +22,13 @@
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
-        <Button x:Name="filesSafeButton" Content="Хранилище файлов" HorizontalAlignment="Left" Margin="-772,464,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
         <TextBlock x:Name="masterPlayerName" HorizontalAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap" Text="MasterPlayerName" VerticalAlignment="Top" Style="{DynamicResource MainText}" Width="205" TextAlignment="Center" Height="34" FontSize="20" Foreground="White"/>
         <Button x:Name="goBackButton" Style="{DynamicResource ButtonMain}" Content="Назад" HorizontalAlignment="Left" Margin="0,477,0,0" VerticalAlignment="Top" Width="200" Click="GoBackButtonClick"/>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible"  HorizontalAlignment="Left" Height="67" Margin="205,0,0,0" VerticalAlignment="Top" Width="739">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Background="#7F000000">
                 <Button x:Name="goChatButton" Content="Чат" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000" Click="GoChatButtonClick"/>
-                <Button x:Name="goCanvasButton" Content="Холст" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000"/>
-                <Button x:Name="goStorageButton" Content="Хранилище" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000"/>
+                <Button x:Name="goCanvasButton" Content="Холст" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000" Click="GoCanvasButtonClick"/>
+                <Button x:Name="goStorageButton" Content="Хранилище" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000" Click="GoStorageButtonClick"/>
                 <Button x:Name="goCharactersButton" Content="Персонажи" Width="200" Background="#26000000" Foreground="White" FontSize="22" FontFamily="Yu Gothic UI Semibold" BorderBrush="#66000000" Click="GoCharactersButtonClick"/>
             </StackPanel>
         </ScrollViewer>
@@ -37,10 +38,21 @@
             <Button x:Name="sendButton" Content="Отправить" HorizontalAlignment="Left" Margin="611,365,0,0" VerticalAlignment="Top" Width="128" Height="35" Background="#66FFFFFF" FontSize="18" Click="SendButtonClick"/>
             <Button x:Name="rollDice" Content="Кинуть кубики" HorizontalAlignment="Left" Margin="3,405,0,0" VerticalAlignment="Top" Width="190" Height="25" Style="{DynamicResource ButtonMain}"/>
         </Grid>
-        <Grid x:Name="charactersGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
+        <Grid Visibility="Hidden" x:Name="charactersGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
             <ListBox x:Name="charactersListBox" HorizontalAlignment="Left" Height="383" Margin="10,10,0,0" VerticalAlignment="Top" Width="719" Style="{DynamicResource ListBoxMain}"/>
             <Button x:Name="editCharacterButton" Content="Редактировать персонажа" HorizontalAlignment="Left" Margin="185,398,0,0" VerticalAlignment="Top" Width="364" Height="30" Style="{DynamicResource ButtonMain}" Click="EditCharacterButtonClick"/>
-            <!--<Button x:Name="addNewCharacterButton" Content="Добавить нового персонажа" HorizontalAlignment="Left" Margin="461,398,0,0" VerticalAlignment="Top" Width="268" Height="30" Style="{DynamicResource ButtonMain}"/>-->
+        </Grid>
+        <Grid Visibility="Hidden" x:Name="storageGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
+            <ListBox x:Name="storageListBox" HorizontalAlignment="Left" Height="383" Margin="10,10,0,0" VerticalAlignment="Top" Width="719" Style="{DynamicResource ListBoxMain}"/>
+            <Button x:Name="downloadFileButton" Content="Скачать файл" HorizontalAlignment="Left" Margin="10,398,0,0" VerticalAlignment="Top" Width="362" Height="30" Style="{DynamicResource ButtonMain}" Click="DownloadFileButtonClick"/>
+            <Button x:Name="uploadFileButton" Content="Загрузить файл" HorizontalAlignment="Left" Margin="377,398,0,0" VerticalAlignment="Top" Width="352" Height="30" Style="{DynamicResource ButtonMain}" Click="UploadFileButtonClick"/>
+        </Grid>
+        <Grid x:Name="paintGrid" HorizontalAlignment="Left" Height="433" Margin="205,72,0,0" VerticalAlignment="Top" Width="739">
+            <Canvas Name="canvas" MouseLeftButtonDown="CanvasMouseDown" MouseMove="CanvasMouseMove" MouseLeftButtonUp="CanvasMouseLeftButtonUp" MouseRightButtonDown="CanvasMouseRightButtonDown" Margin="0,0,0,35" Background="White">
+            </Canvas>
+            <Button x:Name="deleteLastLine" Content="Отменить" HorizontalAlignment="Left" Margin="10,405,0,0" VerticalAlignment="Top" Width="285" Height="25" Style="{DynamicResource ButtonMain}"/>
+            <Button x:Name="saveCanvas" Content="Отправить в хранилище" HorizontalAlignment="Left" Margin="445,403,0,0" VerticalAlignment="Top" Width="284" Height="25" Style="{DynamicResource ButtonMain}" Click="SaveButtonClick"/>
+            <xctk:ColorPicker Name="colorPicker" SelectedColorChanged="ColorPickerSelectedColorChanged" Margin="300,403,299,3"/>
         </Grid>
     </Grid>
 </Page>

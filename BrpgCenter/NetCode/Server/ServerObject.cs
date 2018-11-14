@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -16,10 +17,12 @@ namespace BrpgCenter
         public int Port { get; set; }
         public TcpListener TcpListener { get; set; } // сервер для прослушивания
         public List<ClientObject> Clients { get; set; } // все подключения
+        public List<FileInfo> FileList { get; set; } //файлы находящиеся на сервере
 
         public ServerObject(string address, int port)
         {
             Clients = new List<ClientObject>();
+            FileList = ReadFileList();
             Address = address;
             Port = port;
         }
@@ -70,6 +73,38 @@ namespace BrpgCenter
         }
 
         #region ClientObjectMethods
+
+        public void AddNewFile(FileInfo fileInfo, byte[] fileContent)
+        {
+            FileInfo newFile = WriteFile(fileContent, fileInfo);
+            if (newFile != null)
+            {
+                FileList.Add(newFile);
+            }
+
+            WriteFileList(FileList);
+        }
+
+        public byte[] GetThisFile(FileInfo fileInfo)
+        {
+            bool isOk = false;
+            foreach (var i in FileList)
+            {
+                if (i.FullName == fileInfo.FullName)
+                {
+                    isOk = true;
+                }
+            }
+
+            if (isOk)
+            {
+                return ReadFile(fileInfo);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public List<Character> GetAllCharacters()
         {
@@ -132,7 +167,7 @@ namespace BrpgCenter
             List<Player> players = new List<Player>();
             for (int i = 0; i < Clients.Count; i++)
             {
-                if (Clients[i].Type == ClientType.ChatClient)
+                if (Clients[i].Type == ClientType.ChatClient && Clients[i].Player != null)
                 {
                     players.Add(Clients[i].Player);
                 }
@@ -154,6 +189,79 @@ namespace BrpgCenter
             string serialized = JsonConvert.SerializeObject(message);
             byte[] data = Encoding.Unicode.GetBytes(serialized);
             client.Stream.Write(data, 0, data.Length);
+        }
+        #endregion
+
+        #region FileReadAndWrite
+
+        public FileInfo WriteFile(byte[] content, FileInfo pack)
+        {
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files");
+            if (!File.Exists(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + pack.Name + pack.Extension) == true)
+            {
+                using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + pack.Name + pack.Extension, FileMode.CreateNew))
+                {
+                    byte[] array = content;
+                    fstream.Write(array, 0, array.Length);
+                }
+                FileInfo newFileInfo = new FileInfo(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + pack.Name + pack.Extension);
+
+                return newFileInfo;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public byte[] ReadFile(FileInfo file)
+        {
+            try
+            {
+                using (FileStream fstream = File.OpenRead(file.FullName))
+                {
+                    byte[] array = new byte[fstream.Length];
+                    fstream.Read(array, 0, array.Length);
+                    return array;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public void WriteFileList(List<FileInfo> vs)
+        {
+            string serialized = JsonConvert.SerializeObject(vs);
+            using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + ".FilesInRoom" + ".json", FileMode.OpenOrCreate))
+            {
+                byte[] array = System.Text.Encoding.Default.GetBytes(serialized);
+                fstream.Write(array, 0, array.Length);
+            }
+        }
+
+        public List<FileInfo> ReadFileList()
+        {
+            try
+            {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files");
+                string json;
+                using (FileStream fstream = File.OpenRead(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + ".FilesInRoom" + ".json"))
+                {
+                    byte[] array = new byte[fstream.Length];
+                    fstream.Read(array, 0, array.Length);
+                    string textFromFile = System.Text.Encoding.Default.GetString(array);
+                    json = textFromFile;
+                }
+                return JsonConvert.DeserializeObject<List<FileInfo>>(json);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return new List<FileInfo>();
+            }
+
         }
         #endregion
 
