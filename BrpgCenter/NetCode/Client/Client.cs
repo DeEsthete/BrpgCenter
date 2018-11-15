@@ -12,7 +12,7 @@ namespace BrpgCenter
 {
     public class Client
     {
-        public const int DATA_LENGTH = 1024;
+        public const int DATA_LENGTH = 1024*1024;
         public const int SLEEP_TIME_COMMON = 2000;
 
         public bool IsConnected { get; set; }

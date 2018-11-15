@@ -1,4 +1,3 @@
-E:\Рабочий стол\BrpgCenter\BrpgCenter\obj\Debug\BrpgCenter.csprojAssemblyReference.cache
 E:\Рабочий стол\BrpgCenter\BrpgCenter\obj\Debug\Pages\ConnectRoomPage.g.cs
 E:\Рабочий стол\BrpgCenter\BrpgCenter\obj\Debug\Pages\CreateRoomPage.g.cs
 E:\Рабочий стол\BrpgCenter\BrpgCenter\obj\Debug\Pages\MainMenuPage.g.cs
@@ -67,3 +66,5 @@ E:\Рабочий стол\BrpgCenter\BrpgCenter\bin\Debug\ro\Xceed.Wpf.AvalonDo
 E:\Рабочий стол\BrpgCenter\BrpgCenter\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 E:\Рабочий стол\BrpgCenter\BrpgCenter\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 E:\Рабочий стол\BrpgCenter\BrpgCenter\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+E:\Рабочий стол\BrpgCenter\BrpgCenter\bin\Debug\BrpgCenter.exe.CodeAnalysisLog.xml
+E:\Рабочий стол\BrpgCenter\BrpgCenter\bin\Debug\BrpgCenter.exe.lastcodeanalysissucceeded

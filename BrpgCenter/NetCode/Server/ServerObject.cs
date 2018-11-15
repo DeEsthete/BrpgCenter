@@ -197,14 +197,14 @@ namespace BrpgCenter
         public FileInfo WriteFile(byte[] content, FileInfo pack)
         {
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files");
-            if (!File.Exists(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + pack.Name + pack.Extension) == true)
+            if (!File.Exists(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + pack.Name))
             {
-                using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + pack.Name + pack.Extension, FileMode.CreateNew))
+                using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + pack.Name, FileMode.CreateNew))
                 {
                     byte[] array = content;
                     fstream.Write(array, 0, array.Length);
                 }
-                FileInfo newFileInfo = new FileInfo(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + pack.Name + pack.Extension);
+                FileInfo newFileInfo = new FileInfo(Directory.GetCurrentDirectory() + @"\" + "Room" + @"_files\" + pack.Name);
 
                 return newFileInfo;
             }

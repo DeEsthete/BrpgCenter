@@ -193,42 +193,29 @@ namespace BrpgCenter
 
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
-            
-            //SaveFileDialog fileDialog = new SaveFileDialog
-            //{
-            //    FileName = "image",
-            //    DefaultExt = ".png",
-            //    Filter = "Png images (.png)|*.png"
-            //};
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\Images");
+            Rect rect = new Rect(canvas.Margin.Left, canvas.Margin.Top, canvas.ActualWidth, canvas.ActualHeight);
+            double dpi = 96d;
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)rect.Right, (int)rect.Bottom, dpi, dpi, PixelFormats.Default);
+            rtb.Render(canvas);
+            BitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(rtb));
 
-            //bool? result = fileDialog.ShowDialog();
-
-            //if (result == true)
-            //{
-            //    string fileName = fileDialog.FileName;
-
-            //    Rect rect = new Rect(canvas.Margin.Left, canvas.Margin.Top, canvas.ActualWidth, canvas.ActualHeight);
-            //    double dpi = 96d;
-
-            //    RenderTargetBitmap rtb = new RenderTargetBitmap((int)rect.Right, (int)rect.Bottom, dpi, dpi, PixelFormats.Default);
-            //    rtb.Render(canvas);
-
-            //    BitmapEncoder encoder = new PngBitmapEncoder();
-            //    encoder.Frames.Add(BitmapFrame.Create(rtb));
-            //    try
-            //    {
-            //        using (MemoryStream stream = new MemoryStream())
-            //        {
-            //            encoder.Save(stream);
-            //            File.WriteAllBytes(fileName, stream.ToArray());
-            //        }
-            //        MessageBox.Show("Сохранено!");
-            //    }
-            //    catch (Exception error)
-            //    {
-            //        MessageBox.Show(error.Message);
-            //    }
-            //}
+            string fileName = Directory.GetCurrentDirectory() + @"\Images\" + Guid.NewGuid().ToString() + ".jpeg";
+            try
+            {
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    encoder.Save(stream);
+                    File.WriteAllBytes(fileName, stream.ToArray());
+                }
+                FileInfo newFile = new FileInfo(fileName);
+                storageClient.UploadFile(newFile);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
         #endregion
 

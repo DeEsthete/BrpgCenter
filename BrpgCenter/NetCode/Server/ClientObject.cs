@@ -12,7 +12,7 @@ namespace BrpgCenter
 {
     public class ClientObject
     {
-        public const int DATA_LENGTH = 1024;
+        public const int DATA_LENGTH = 1024 * 1024;
 
         public string Id { get; private set; }
         public ClientType Type { get; set; }

@@ -140,10 +140,13 @@ namespace BrpgCenter
         public static void WriteFile(byte[] content, FileInfo pack)
         {
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\" + "Downloads");
-            using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\Downloads\" + pack.Name + pack.Extension, FileMode.CreateNew))
+            if (!File.Exists(Directory.GetCurrentDirectory() + @"\Downloads\" + pack.Name))
             {
-                byte[] array = content;
-                fstream.Write(array, 0, array.Length);
+                using (FileStream fstream = new FileStream(Directory.GetCurrentDirectory() + @"\Downloads\" + pack.Name, FileMode.CreateNew))
+                {
+                    byte[] array = content;
+                    fstream.Write(array, 0, array.Length);
+                }
             }
         }
         public static byte[] ReadFile(FileInfo file)
