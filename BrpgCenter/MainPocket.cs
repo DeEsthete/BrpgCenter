@@ -18,6 +18,7 @@ namespace BrpgCenter
         public LanguageManager LanguageManager { get; set; }
 
         public ServerObject Server { get; set; }
+        public bool ServerIsOn { get; set; }
 
         public MainPocket()
         {

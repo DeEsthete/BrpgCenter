@@ -47,6 +47,7 @@ namespace BrpgCenter
             this.charactersClient = new CharactersClient(room.Ip, room.Port, pocket.Player, character);
             this.storageClient = new StorageClient(room.Ip, room.Port, pocket.Player, character);
             paint = new Paint();
+            pocket.ServerIsOn = true;
             
             AcceptServerFirstMessage();
 
@@ -233,14 +234,20 @@ namespace BrpgCenter
         {
             return Task.Run(() =>
             {
-                while (true)
+                try
                 {
-                    Thread.Sleep(SLEEP_TIME_IMPORTANT);
-                    foreach (var i in chatClient.Messages)
+                    while (pocket.ServerIsOn)
                     {
-                        Dispatcher.Invoke(() => chatListBox.Items.Insert(0,i.SenderName + ": " + i.Content));
+                        Thread.Sleep(SLEEP_TIME_IMPORTANT);
+                        foreach (var i in chatClient.Messages)
+                        {
+                            Dispatcher.Invoke(() => chatListBox.Items.Insert(0, i.SenderName + ": " + i.Content));
+                        }
+                        chatClient.Messages.Clear();
                     }
-                    chatClient.Messages.Clear();
+                }
+                catch (Exception)
+                {
                 }
             });
         }
@@ -256,7 +263,7 @@ namespace BrpgCenter
             {
                 try
                 {
-                    while (true)
+                    while (pocket.ServerIsOn)
                     {
                         Dispatcher.Invoke(() => playersListBox.Items.Clear());
                         foreach (var i in stateClient.PlayersInRoom)
@@ -282,16 +289,22 @@ namespace BrpgCenter
         {
             return Task.Run(() =>
             {
-                while (true)
+                try
                 {
-                    object currentSelected = Dispatcher.Invoke(() => charactersListBox.SelectedItem);
-                    Dispatcher.Invoke(() => charactersListBox.Items.Clear());
-                    foreach (var i in charactersClient.CharactersInRoom)
+                    while (pocket.ServerIsOn)
                     {
-                        Dispatcher.Invoke(() => charactersListBox.Items.Insert(0, "Владелец: " + i.Owner.NickName + " Имя: " + i.FullName));
+                        object currentSelected = Dispatcher.Invoke(() => charactersListBox.SelectedItem);
+                        Dispatcher.Invoke(() => charactersListBox.Items.Clear());
+                        foreach (var i in charactersClient.CharactersInRoom)
+                        {
+                            Dispatcher.Invoke(() => charactersListBox.Items.Insert(0, "Владелец: " + i.Owner.NickName + " Имя: " + i.FullName));
+                        }
+                        Dispatcher.Invoke(() => charactersListBox.SelectedItem = currentSelected);
+                        Thread.Sleep(SLEEP_TIME_COMMON);
                     }
-                    Dispatcher.Invoke(() => charactersListBox.SelectedItem = currentSelected);
-                    Thread.Sleep(SLEEP_TIME_COMMON);
+                }
+                catch (Exception)
+                {
                 }
             });
         }
@@ -305,16 +318,22 @@ namespace BrpgCenter
         {
             return Task.Run(() =>
             {
-                while (true)
+                try
                 {
-                    object currentSelected = Dispatcher.Invoke(() => storageListBox.SelectedItem);
-                    Dispatcher.Invoke(() => storageListBox.Items.Clear());
-                    foreach (var i in storageClient.FileList)
+                    while (pocket.ServerIsOn)
                     {
-                        Dispatcher.Invoke(() => storageListBox.Items.Insert(0, "Имя: " + i.Name + " Размер: " + i.Length));
+                        object currentSelected = Dispatcher.Invoke(() => storageListBox.SelectedItem);
+                        Dispatcher.Invoke(() => storageListBox.Items.Clear());
+                        foreach (var i in storageClient.FileList)
+                        {
+                            Dispatcher.Invoke(() => storageListBox.Items.Insert(0, "Имя: " + i.Name + " Размер: " + i.Length));
+                        }
+                        Dispatcher.Invoke(() => storageListBox.SelectedItem = currentSelected);
+                        Thread.Sleep(SLEEP_TIME_COMMON);
                     }
-                    Dispatcher.Invoke(() => storageListBox.SelectedItem = currentSelected);
-                    Thread.Sleep(SLEEP_TIME_COMMON);
+                }
+                catch (Exception)
+                {
                 }
             });
         }
@@ -330,6 +349,12 @@ namespace BrpgCenter
 
         private void GoBackButtonClick(object sender, RoutedEventArgs e)
         {
+            pocket.ServerIsOn = false;
+            if (isHost)
+            {
+                pocket.Server.Disconnect();
+                pocket.Server.TcpListener.Stop();
+            }
             pocket.MainWindow.Content = new RoomsPage(pocket);
         }
 

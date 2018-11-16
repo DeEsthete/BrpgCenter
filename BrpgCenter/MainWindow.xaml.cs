@@ -63,6 +63,9 @@ namespace BrpgCenter
 
         private void MainWindowClosed(object sender, EventArgs e)
         {
+            pocket.ServerIsOn = false;
+            pocket.Server.Disconnect();
+            pocket.Server.TcpListener.Stop();
             pocket.Context.SaveChanges();
             WritePlayerFile(pocket.Player);
         }

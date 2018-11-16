@@ -32,14 +32,17 @@ namespace BrpgCenter
 
         public async void StartReceive()
         {
-            await ReceiveWork();
+            if (IsConnected)
+            {
+                await ReceiveWork();
+            }
         }
 
         private Task ReceiveWork()
         {
             return Task.Run(() =>
             {
-                while (true)
+                while (IsConnected)
                 {
                     try
                     {

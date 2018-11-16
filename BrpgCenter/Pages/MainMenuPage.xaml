@@ -17,7 +17,7 @@
         <TextBlock x:Name="nickNameTextBlock" HorizontalAlignment="Left" Margin="10,173,0,0" TextWrapping="Wrap" Text="nickNameTextBlock" VerticalAlignment="Top" Width="230" TextAlignment="Center" FontSize="20"/>
         <Button Style="{DynamicResource ButtonMain}" x:Name="profileSettingsButton" Content="Настроить профиль" HorizontalAlignment="Left" Margin="0,479,0,0" VerticalAlignment="Top" Width="249" Click="ProfileSettingsButtonClick"/>
         <TextBlock HorizontalAlignment="Left" Margin="535,10,0,0" TextWrapping="Wrap" Text="BrpgCenter" VerticalAlignment="Top" FontFamily="Pristina" FontSize="48"/>
-        <TextBlock HorizontalAlignment="Left" Margin="453,24,0,0" TextWrapping="Wrap" Text="welcome to " VerticalAlignment="Top" FontFamily="Pristina" FontSize="22"/>
+        <TextBlock HorizontalAlignment="Left" Margin="416,24,0,0" TextWrapping="Wrap" Text="welcome to " VerticalAlignment="Top" FontFamily="Pristina" FontSize="22"/>
         <Button Style="{DynamicResource ButtonMain}" x:Name="charactersButton" Content="Персонажи" HorizontalAlignment="Left" Margin="495,207,0,0" VerticalAlignment="Top" Width="242" Click="CharactersButtonClick"/>
         <Button Style="{DynamicResource ButtonMain}" x:Name="roomsButton" Content="Комнаты" HorizontalAlignment="Left" Margin="495,173,0,0" VerticalAlignment="Top" Width="242" Click="RoomsButtonClick"/>
         <Button Style="{DynamicResource ButtonMain}" x:Name="settingsButton" Content="Настройки" HorizontalAlignment="Left" Margin="495,344,0,0" VerticalAlignment="Top" Width="242" Click="SettingsButtonClick"/>

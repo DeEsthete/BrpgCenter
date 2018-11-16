@@ -62,7 +62,7 @@ namespace BrpgCenter
         {
             return Task.Run(() =>
             {
-                while (true)
+                while (IsConnected)
                 {
                     try
                     {

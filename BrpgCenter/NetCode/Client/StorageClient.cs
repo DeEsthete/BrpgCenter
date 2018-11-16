@@ -35,14 +35,17 @@ namespace BrpgCenter
 
         public async void StartReceive()
         {
-            await ReceiveWork();
+            if (IsConnected)
+            {
+                await ReceiveWork();
+            }
         }
 
         private Task ReceiveWork()
         {
             return Task.Run(() =>
             {
-                while (true)
+                while (IsConnected)
                 {
                     try
                     {
@@ -81,7 +84,10 @@ namespace BrpgCenter
 
         public async void DownloadFile(FileInfo file)
         {
-            await DownloadFileWork(file);
+            if (IsConnected)
+            {
+                await DownloadFileWork(file);
+            }
         }
 
         private Task DownloadFileWork(FileInfo file)
@@ -117,7 +123,10 @@ namespace BrpgCenter
 
         public async void UploadFile(FileInfo file)
         {
-            await UploadFileWork(file);
+            if (IsConnected)
+            {
+                await UploadFileWork(file);
+            }
         }
 
         private Task UploadFileWork(FileInfo file)
