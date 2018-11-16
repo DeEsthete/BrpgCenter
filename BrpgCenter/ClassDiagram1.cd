@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BrpgCenter.App" Collapsed="true">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.BrpgCenterContext" Collapsed="true">
+    <Position X="11.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>BrpgCenterContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.Character" Collapsed="true">
+    <Position X="13.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>VAACAISEAMAQSImAAEAAQAQRQCAKAAAgAAABRABAIEA=</HashCode>
+      <FileName>Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.Language" Collapsed="true">
+    <Position X="15" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Languages\Language.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.LanguageManager" Collapsed="true">
+    <Position X="16.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABQCAAAAEAAAgACAAAAAAAABAAAAAAAAAABAgA=</HashCode>
+      <FileName>Languages\LanguageManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.MainPocket" Collapsed="true">
+    <Position X="11.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAEAAAGAAAAAAAAAwAAAwAAAAA=</HashCode>
+      <FileName>MainPocket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAI=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.Memento" Collapsed="true">
+    <Position X="15" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Memento.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.CharactersClient" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIEAAAAAAAAAAABAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>NetCode\Client\CharactersClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.ChatClient" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAACAAAAAEACAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>NetCode\Client\ChatClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.Client" Collapsed="true">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAAAABAAAAAAAAACQCIAABCAAAAAQAACEA=</HashCode>
+      <FileName>NetCode\Client\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.StateClient" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAABAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NetCode\Client\StateClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.StorageClient" Collapsed="true">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAMAAAAAAAAQAABACAAAAEAAACAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>NetCode\Client\StorageClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.CharacterMessage" Collapsed="true">
+    <Position X="15" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAABAAACAA=</HashCode>
+      <FileName>NetCode\Messages\CharacterMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.ChatMessage" Collapsed="true">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>NetCode\Messages\ChatMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.FileMessage" Collapsed="true">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAACAAAAAAUAAAAAAAAA=</HashCode>
+      <FileName>NetCode\Messages\FileMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.FirstMessage" Collapsed="true">
+    <Position X="13.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAACAA=</HashCode>
+      <FileName>NetCode\Messages\FirstMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.ServerFirstMessage" Collapsed="true">
+    <Position X="18.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAASAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NetCode\Messages\ServerFirstMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.ClientObject" Collapsed="true">
+    <Position X="16.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQASAACAAAABAAAQAgAAAACAAAAIAEAAAQAAAwCACFQ=</HashCode>
+      <FileName>NetCode\Server\ClientObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.ServerObject" Collapsed="true">
+    <Position X="9.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgJIAAAJAARUAAASAAAAAASQCAAAACAAQAiAABAAA=</HashCode>
+      <FileName>NetCode\Server\ServerObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.CharacterPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAACAAAAAAAAEAAAAAgACgAA=</HashCode>
+      <FileName>Pages\CharacterPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.CharacterPageOne" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAACAAAAAAAAEAAAAAgACgAA=</HashCode>
+      <FileName>Pages\CharacterPageOne.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.CharacterPageThird" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAACAAAAAAAAEAAAAAgACgAA=</HashCode>
+      <FileName>Pages\CharacterPageThird.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.CharacterPageTwo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAACAAAAAAAAEAAAAAgACgAA=</HashCode>
+      <FileName>Pages\CharacterPageTwo.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.CharactersPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgACAAA=</HashCode>
+      <FileName>Pages\CharactersPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.ConnectRoomPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgACAAA=</HashCode>
+      <FileName>Pages\ConnectRoomPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.CreateRoomPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgACAAA=</HashCode>
+      <FileName>Pages\CreateRoomPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.LiteraturePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQIAAAAAAAAAgACAAA=</HashCode>
+      <FileName>Pages\LiteraturePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.MainMenuPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAABAAAAAAAAAgAgAAAAIAAAAAIACAAA=</HashCode>
+      <FileName>Pages\MainMenuPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.ProfileEditPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAABAAAAAAQCABA=</HashCode>
+      <FileName>Pages\ProfileEditPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.RoomPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgIQJCAKEQQAAAAQAAAABgQQQDAQAhCAgJAAgSCARk=</HashCode>
+      <FileName>Pages\RoomPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.RoomsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAgAAAAAAAAAAAAAAAACABAAAEAAAAAgACAAA=</HashCode>
+      <FileName>Pages\RoomsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.SettingsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACABA=</HashCode>
+      <FileName>Pages\SettingsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.ToolsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\ToolsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BrpgCenter.Paint" Collapsed="true">
+    <Position X="16.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAQBAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Paint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.Player" Collapsed="true">
+    <Position X="18.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACDAAAAAAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.Room" Collapsed="true">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQACAAgAgAAAAAAAAAAIAA=</HashCode>
+      <FileName>Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.Properties.Resources" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BrpgCenter.Properties.Settings" Collapsed="true">
+    <Position X="11.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BrpgCenter.CharacterMessageType" Collapsed="true">
+    <Position X="9.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAQAAAAACAAAAAAAAAAQ=</HashCode>
+      <FileName>NetCode\CharacterMessageType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BrpgCenter.ClientType" Collapsed="true">
+    <Position X="11.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAkAgAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>NetCode\ClientType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BrpgCenter.FileMessageType" Collapsed="true">
+    <Position X="13.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAACAAAAAAAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>NetCode\FileMessageType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

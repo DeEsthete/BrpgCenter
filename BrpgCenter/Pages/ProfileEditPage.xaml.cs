@@ -91,6 +91,7 @@ namespace BrpgCenter
             {
                 player.PathToImage = pathToCopy;
             }
+            player.NickName = nickNameTextBox.Text;
 
             pocket.Player = player;
             pocket.MainWindow.Content = new MainMenuPage(pocket);

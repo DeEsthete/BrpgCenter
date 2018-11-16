@@ -69,6 +69,7 @@ namespace BrpgCenter
         public static Language ReadFileLanguage(string name)
         {
             string json;
+
             using (FileStream fstream = File.OpenRead(Directory.GetCurrentDirectory() + @"\" + name + ".json"))
             {
                 byte[] array = new byte[fstream.Length];

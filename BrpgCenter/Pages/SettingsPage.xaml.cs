@@ -40,7 +40,7 @@ namespace BrpgCenter
         {
             pocket.LanguageManager.CurrentLanguage = languagesComboBox.SelectedItem as string;
 
-            if (languagesComboBox.SelectedItem as string != "Russian")
+            if (languagesComboBox.SelectedItem as string != "Russian" && languagesComboBox.SelectedIndex != -1)
             {
                 bool isTrue = false;
 
